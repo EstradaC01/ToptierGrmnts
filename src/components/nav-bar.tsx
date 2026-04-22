@@ -35,6 +35,7 @@ export function NavBar() {
   ];
 
   const isCatActive = (cat: string) => currentCat === cat;
+  const isHomeActive = pathname === '/' && !currentCat;
 
   return (
     <header className="fixed top-0 z-50 w-full px-4 pt-4 pointer-events-none">
@@ -52,7 +53,16 @@ export function NavBar() {
                 <SheetTitle className="text-left font-black text-5xl font-headline italic tracking-tighter text-primary uppercase">TOPTIER</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-8 mt-20">
-                <p className="text-[10px] font-black tracking-[0.4em] text-foreground/30 uppercase">COLLECTIONS</p>
+                <Link 
+                  href="/" 
+                  className={cn(
+                    "text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit",
+                    isHomeActive && "text-primary border-primary"
+                  )}
+                >
+                  HOME
+                </Link>
+                <p className="text-[10px] font-black tracking-[0.4em] text-foreground/30 uppercase mt-4">COLLECTIONS</p>
                 {collections.map((item) => (
                   <Link 
                     key={item.cat}
@@ -79,17 +89,27 @@ export function NavBar() {
             </SheetContent>
           </Sheet>
           
-          <Link href="/" className="flex items-center gap-2">
+          <div className="flex items-center gap-2 select-none">
             <span className="text-3xl font-black tracking-tighter text-primary font-headline italic uppercase">TOPTIER</span>
-          </Link>
+          </div>
         </div>
 
         <nav className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em]">
+          <Link 
+            href="/" 
+            className={cn(
+              "hover:text-primary transition-colors",
+              isHomeActive ? "text-primary" : "text-foreground/50"
+            )}
+          >
+            HOME
+          </Link>
+
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-2 hover:text-primary transition-colors outline-none group">
               <span className={cn(
-                "text-foreground/50 group-hover:text-primary",
-                collections.some(c => isCatActive(c.cat)) && "text-primary"
+                "group-hover:text-primary",
+                collections.some(c => isCatActive(c.cat)) ? "text-primary" : "text-foreground/50"
               )}>COLLECTIONS</span>
               <ChevronDown className="h-3 w-3 text-primary/30 group-hover:text-primary transition-colors" />
             </DropdownMenuTrigger>
@@ -113,8 +133,8 @@ export function NavBar() {
           <Link 
             href="/shop?cat=GARMENTS & BAG" 
             className={cn(
-              "hover:text-primary transition-colors text-foreground/50",
-              isCatActive('GARMENTS & BAG') && "text-primary"
+              "hover:text-primary transition-colors",
+              isCatActive('GARMENTS & BAG') ? "text-primary" : "text-foreground/50"
             )}
           >
             GARMENTS & BAG
