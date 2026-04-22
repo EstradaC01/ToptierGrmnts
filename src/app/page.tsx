@@ -41,11 +41,11 @@ export default function Home() {
     },
     {
       id: 'bag-1',
-      name: 'LEATHER TRAVEL BAG',
+      name: 'CANVAS UTILITY TOTE',
       price: 24500,
       category: 'GARMENTS & BAG',
-      imageUrl: 'https://vonbaer.com/cdn/shop/files/von-baer-grand-large-full-grain-leather-garment-travel-bag-tan-luxury-man-carrying-on-sunset.jpg?v=1745567636&width=500',
-      imageHint: 'luxury leather bag',
+      imageUrl: 'https://artifactbags.com/cdn/shop/files/175-rust-wax-2025-1180x1480_82c8a9db-8803-4dfc-be26-471c200b112f_590x740_crop_center.progressive.jpg?v=1760547049',
+      imageHint: 'canvas utility tote',
       condition: 'NEW',
       size: 'OS',
     }
