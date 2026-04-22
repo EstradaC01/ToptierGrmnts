@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -50,7 +51,7 @@ export function ProductCard({
     streetwear: {
       card: "bg-transparent border-none",
       imageContainer: "aspect-square border-2 border-primary/20 shadow-none group-hover:shadow-pop",
-      imageClass: "object-cover grayscale-0",
+      imageClass: "object-cover",
       textClass: "font-black text-xl tracking-tighter uppercase italic",
       priceClass: "text-2xl font-black tracking-tighter",
     },
@@ -76,7 +77,7 @@ export function ProductCard({
     <Dialog>
       <DialogTrigger asChild>
         <Card className={cn(
-          "group cursor-pointer overflow-hidden transition-all duration-300",
+          "group cursor-pointer overflow-hidden transition-all duration-300 rounded-none border-none shadow-none",
           style.card
         )}>
           <CardContent className={cn(
@@ -92,10 +93,10 @@ export function ProductCard({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             
-            <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
               <Button variant="secondary" className="rounded-none font-black uppercase text-[10px] tracking-widest gap-2 bg-background text-foreground shadow-pop">
                 <Eye className="h-4 w-4" />
-                VIEW PIECE
+                VIEW DETAILS
               </Button>
             </div>
 
@@ -107,13 +108,13 @@ export function ProductCard({
           </CardContent>
 
           <CardFooter className="flex flex-col items-start px-0 pt-4 pb-0">
-            <h3 className={cn("text-foreground group-hover:text-primary transition-colors leading-none mb-1", style.textClass)}>
+            <h3 className={cn("text-foreground group-hover:text-primary transition-colors leading-none mb-1 uppercase", style.textClass)}>
               {name}
             </h3>
             <div className="flex justify-between w-full items-center">
-              <p className={cn("text-foreground", style.priceClass)}>₱{price.toLocaleString()}</p>
+              <p className={cn("text-foreground font-bold", style.priceClass)}>₱{price.toLocaleString()}</p>
               <span className="text-[10px] font-black uppercase text-primary/40 tracking-widest">
-                SIZE: {size}
+                {size}
               </span>
             </div>
           </CardFooter>

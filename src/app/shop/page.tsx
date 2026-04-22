@@ -1,12 +1,10 @@
+
 "use client";
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
-import { Button } from '@/components/ui/button';
-import { FilterX } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 // Import collection layouts
 import { LuxuryCollection } from '@/components/collections/luxury-collection';
@@ -122,8 +120,6 @@ function ShopContent() {
     }
   }, [categoryParam]);
 
-  const categories = ['LUXURY', 'STREETWEAR', 'SPORTSWEAR', 'FORMAL WEAR', 'GARMENTS & BAG'];
-
   const filteredProducts = MOCK_PRODUCTS.filter(p => p.category.toUpperCase() === activeCategory);
 
   const renderCollection = () => {
@@ -151,43 +147,14 @@ function ShopContent() {
   };
 
   return (
-    <main className="flex-grow pt-32 pb-24 bg-background">
+    <main className="flex-grow pt-40 pb-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex flex-col gap-20">
-          
-          <div className="flex flex-col gap-12">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 border-b-2 border-primary/10 pb-8">
-              <div className="flex items-center gap-2 overflow-x-auto pb-4 md:pb-0 no-scrollbar">
-                {categories.map((cat) => (
-                  <Button 
-                    key={cat}
-                    onClick={() => setActiveCategory(cat)}
-                    variant={activeCategory === cat ? "default" : "outline"}
-                    className={cn(
-                      "rounded-none px-8 py-6 font-black uppercase tracking-widest text-[10px] transition-all",
-                      activeCategory === cat 
-                        ? "bg-primary text-primary-foreground shadow-pop" 
-                        : "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                    )}
-                  >
-                    {cat}
-                  </Button>
-                ))}
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <p className="text-[10px] font-black uppercase tracking-widest text-foreground/40">
-                  <span className="text-foreground">{filteredProducts.length}</span> PIECES LOADED
-                </p>
-              </div>
-            </div>
-          </div>
-
           <div className="min-h-[60vh]">
             {renderCollection()}
           </div>
           
-          {filteredProducts.length > 0 && (
+          {filteredProducts.length > 0 && (activeCategory !== 'SPORTSWEAR') && (
             <div className="flex flex-col items-center mt-32 gap-6">
               <div className="w-full max-w-sm h-1 bg-primary/10 overflow-hidden">
                 <div className="h-full bg-primary w-2/3" />

@@ -1,8 +1,10 @@
+
 "use client";
 
 import React from 'react';
 import Link from 'next/link';
-import { Search, Menu, ShoppingBag, User } from 'lucide-react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { Search, Menu, ShoppingBag, User, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -12,15 +14,27 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { cn } from '@/lib/utils';
 
 export function NavBar() {
-  const navItems = [
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const currentCat = searchParams.get('cat');
+
+  const collections = [
     { name: 'LUXURY', cat: 'LUXURY' },
     { name: 'STREETWEAR', cat: 'STREETWEAR' },
     { name: 'SPORTSWEAR', cat: 'SPORTSWEAR' },
     { name: 'FORMAL WEAR', cat: 'FORMAL WEAR' },
-    { name: 'GARMENTS & BAG', cat: 'GARMENTS & BAG' }
   ];
+
+  const isCatActive = (cat: string) => currentCat === cat;
 
   return (
     <header className="fixed top-0 z-50 w-full px-4 pt-4 pointer-events-none">
@@ -35,33 +49,76 @@ export function NavBar() {
             </SheetTrigger>
             <SheetContent side="left" className="w-full sm:w-[400px] border-r border-primary/10 p-12 bg-background">
               <SheetHeader>
-                <SheetTitle className="text-left font-black text-5xl font-headline italic tracking-tighter text-primary">TOPTIER</SheetTitle>
+                <SheetTitle className="text-left font-black text-5xl font-headline italic tracking-tighter text-primary uppercase">TOPTIER</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-8 mt-20">
-                {navItems.map((item) => (
+                <p className="text-[10px] font-black tracking-[0.4em] text-foreground/30 uppercase">COLLECTIONS</p>
+                {collections.map((item) => (
                   <Link 
                     key={item.cat}
                     href={`/shop?cat=${item.cat}`} 
-                    className="text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit"
+                    className={cn(
+                      "text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit",
+                      isCatActive(item.cat) && "text-primary border-primary"
+                    )}
                   >
                     {item.name}
                   </Link>
                 ))}
+                <div className="h-px bg-primary/10 my-4" />
+                <Link 
+                  href="/shop?cat=GARMENTS & BAG" 
+                  className={cn(
+                    "text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit",
+                    isCatActive('GARMENTS & BAG') && "text-primary border-primary"
+                  )}
+                >
+                  GARMENTS & BAG
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>
           
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-3xl font-black tracking-tighter text-primary font-headline italic">TOPTIER</span>
+            <span className="text-3xl font-black tracking-tighter text-primary font-headline italic uppercase">TOPTIER</span>
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.4em] text-foreground/50">
-          {navItems.map((item) => (
-            <Link key={item.cat} href={`/shop?cat=${item.cat}`} className="hover:text-primary transition-colors">
-              {item.name}
-            </Link>
-          ))}
+        <nav className="hidden md:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em]">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-2 hover:text-primary transition-colors outline-none group">
+              <span className={cn(
+                "text-foreground/50 group-hover:text-primary",
+                collections.some(c => isCatActive(c.cat)) && "text-primary"
+              )}>COLLECTIONS</span>
+              <ChevronDown className="h-3 w-3 text-primary/30 group-hover:text-primary transition-colors" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="rounded-none border-2 border-primary bg-background p-2 min-w-[200px] shadow-pop">
+              {collections.map((item) => (
+                <DropdownMenuItem key={item.cat} asChild>
+                  <Link 
+                    href={`/shop?cat=${item.cat}`}
+                    className={cn(
+                      "flex w-full px-4 py-3 text-[10px] font-black tracking-[0.2em] hover:bg-primary hover:text-primary-foreground transition-all cursor-pointer rounded-none",
+                      isCatActive(item.cat) && "bg-primary/5 text-primary border-l-4 border-primary"
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Link 
+            href="/shop?cat=GARMENTS & BAG" 
+            className={cn(
+              "hover:text-primary transition-colors text-foreground/50",
+              isCatActive('GARMENTS & BAG') && "text-primary"
+            )}
+          >
+            GARMENTS & BAG
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
