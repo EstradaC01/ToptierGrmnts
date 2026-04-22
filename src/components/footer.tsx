@@ -21,13 +21,13 @@ export function Footer() {
               The premium destination for luxury, streetwear, and rare garments. Authenticated, curated, and delivered globally from Metro Manila.
             </p>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="icon" className="border-primary-foreground/20 hover:bg-primary-foreground hover:text-primary rounded-none">
+              <Button variant="outline" size="icon" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none transition-all">
                 <Instagram className="h-4 w-4" />
               </Button>
-              <Button variant="outline" size="icon" className="border-primary-foreground/20 hover:bg-primary-foreground hover:text-primary rounded-none">
+              <Button variant="outline" size="icon" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none transition-all">
                 <Twitter className="h-4 w-4" />
               </Button>
-              <Button variant="outline" size="icon" className="border-primary-foreground/20 hover:bg-primary-foreground hover:text-primary rounded-none">
+              <Button variant="outline" size="icon" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-none transition-all">
                 <Facebook className="h-4 w-4" />
               </Button>
             </div>
@@ -47,11 +47,11 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-black mb-8 uppercase tracking-[0.4em]">THE VAULT</h4>
             <div className="space-y-6">
-              <div className="flex items-start gap-3 text-[10px] font-black uppercase tracking-widest text-primary-foreground/50">
+              <div className="flex items-start gap-3 text-[10px] font-black uppercase tracking-widest text-primary-foreground/80">
                 <MapPin className="h-4 w-4 shrink-0" />
                 <p>Private Showroom, Makati City, Metro Manila</p>
               </div>
-              <div className="flex items-start gap-3 text-[10px] font-black uppercase tracking-widest text-primary-foreground/50">
+              <div className="flex items-start gap-3 text-[10px] font-black uppercase tracking-widest text-primary-foreground/80">
                 <Globe className="h-4 w-4 shrink-0" />
                 <p>Worldwide Shipping & Logistics</p>
               </div>
