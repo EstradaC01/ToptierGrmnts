@@ -38,9 +38,6 @@ export function NavBar() {
                 <SheetTitle className="text-left font-black text-5xl font-headline italic tracking-tighter text-primary">TOPTIER</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-8 mt-20">
-                <Link href="/shop" className="text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit">
-                  All Pieces
-                </Link>
                 {navItems.map((item) => (
                   <Link 
                     key={item.cat}
@@ -60,7 +57,6 @@ export function NavBar() {
         </div>
 
         <nav className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.4em] text-foreground/50">
-          <Link href="/shop" className="hover:text-primary transition-colors">The Vault</Link>
           {navItems.map((item) => (
             <Link key={item.cat} href={`/shop?cat=${item.cat}`} className="hover:text-primary transition-colors">
               {item.name}
@@ -73,7 +69,7 @@ export function NavBar() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/30" />
             <Input
               type="search"
-              placeholder="SEARCH VAULT..."
+              placeholder="SEARCH..."
               className="pl-10 bg-muted/10 border-none rounded-none h-10 text-[10px] font-black uppercase tracking-widest focus-visible:ring-1 focus-visible:ring-primary/20"
             />
           </div>

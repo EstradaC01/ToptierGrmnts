@@ -10,7 +10,7 @@ import { MessageCircle, ShoppingBag, Eye, ShieldCheck, X } from 'lucide-react';
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cn } from '@/lib/utils';
 
-interface ProductCardProps {
+export interface Product {
   id: string;
   name: string;
   price: number;
@@ -20,7 +20,10 @@ interface ProductCardProps {
   condition: string;
   size: string;
   description?: string;
-  viewMode?: 'grid' | 'list';
+}
+
+interface ProductCardProps extends Product {
+  variant?: 'luxury' | 'streetwear' | 'formal' | 'garments';
 }
 
 export function ProductCard({ 
@@ -33,85 +36,92 @@ export function ProductCard({
   condition, 
   size, 
   description = "A highly sought-after archive piece from our curated collection. This garment represents the pinnacle of design and material quality, authenticated by our specialists.",
-  viewMode = 'grid' 
+  variant = 'streetwear'
 }: ProductCardProps) {
-  const isList = viewMode === 'list';
+  
+  const variantStyles = {
+    luxury: {
+      card: "bg-transparent",
+      imageContainer: "aspect-[3/4] border-none shadow-none",
+      imageClass: "object-cover",
+      textClass: "font-headline text-3xl italic tracking-tight",
+      priceClass: "text-2xl font-light",
+    },
+    streetwear: {
+      card: "bg-transparent border-none",
+      imageContainer: "aspect-square border-2 border-primary/20 shadow-none group-hover:shadow-pop",
+      imageClass: "object-cover grayscale-0",
+      textClass: "font-black text-xl tracking-tighter uppercase italic",
+      priceClass: "text-2xl font-black tracking-tighter",
+    },
+    formal: {
+      card: "bg-white p-4 border border-primary/10",
+      imageContainer: "aspect-[4/5] bg-muted/5",
+      imageClass: "object-cover",
+      textClass: "font-bold text-lg uppercase tracking-widest",
+      priceClass: "text-xl font-bold",
+    },
+    garments: {
+      card: "bg-transparent",
+      imageContainer: "aspect-[1/1] border-b-4 border-primary/20",
+      imageClass: "object-contain bg-white p-4",
+      textClass: "font-black text-sm uppercase tracking-[0.2em]",
+      priceClass: "text-lg font-black",
+    }
+  };
+
+  const style = variantStyles[variant];
 
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Card className={cn(
-          "group cursor-pointer overflow-hidden border-none shadow-none bg-transparent transition-all",
-          isList ? "flex flex-row items-center gap-6" : "flex flex-col"
+          "group cursor-pointer overflow-hidden transition-all duration-300",
+          style.card
         )}>
-          {/* Image Container */}
           <CardContent className={cn(
-            "p-0 relative overflow-hidden bg-muted/5 border-2 border-primary/20 transition-all duration-300 group-hover:shadow-[8px_8px_0px_0px_hsl(var(--primary))]",
-            isList ? "w-48 h-48 shrink-0" : "aspect-[3/4] w-full"
+            "p-0 relative overflow-hidden transition-all duration-300",
+            style.imageContainer
           )}>
             <Image
               src={imageUrl}
               alt={name}
               fill
-              className="object-cover transition-all duration-700 group-hover:scale-105"
+              className={cn("transition-all duration-700 group-hover:scale-105", style.imageClass)}
               data-ai-hint={imageHint}
-              sizes={isList ? "192px" : "(max-width: 768px) 50vw, 25vw"}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             
-            {/* Hover Overlay - View Details Button */}
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <Button variant="secondary" className="rounded-none font-black uppercase text-[10px] tracking-widest gap-2 bg-background text-foreground">
+            <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <Button variant="secondary" className="rounded-none font-black uppercase text-[10px] tracking-widest gap-2 bg-background text-foreground shadow-pop">
                 <Eye className="h-4 w-4" />
-                View Details
+                VIEW PIECE
               </Button>
             </div>
 
-            <div className="absolute top-2 left-2 flex flex-col gap-1">
+            <div className="absolute top-2 left-2">
               <Badge className="bg-primary text-primary-foreground border-none font-black px-2 py-0.5 text-[8px] uppercase tracking-widest">
-                {category}
+                {condition}
               </Badge>
             </div>
           </CardContent>
 
-          {/* Product Details info */}
-          <CardFooter className={cn(
-            "flex flex-col items-start px-0 pb-4",
-            isList ? "pt-0 flex-1" : "pt-6"
-          )}>
-            <div className="flex justify-between w-full items-start mb-2">
-              <h3 className={cn(
-                "font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors italic",
-                isList ? "text-3xl" : "text-2xl"
-              )}>{name}</h3>
-              {isList && (
-                <Badge variant="outline" className="border-2 border-primary font-black px-2 py-0.5 text-[8px] tracking-widest uppercase text-primary">
-                  {condition}
-                </Badge>
-              )}
-            </div>
-
-            <div className="flex items-center justify-between w-full mt-auto">
-              <div className="flex flex-col">
-                <p className={cn(
-                  "text-foreground font-black tracking-tighter",
-                  isList ? "text-4xl" : "text-3xl"
-                )}>₱{price.toLocaleString()}</p>
-                {isList && <p className="text-[10px] font-bold text-foreground/40 mt-1 uppercase tracking-widest">SIZE: {size}</p>}
-              </div>
-              {!isList && (
-                <span className="text-[9px] font-black uppercase text-primary bg-primary/5 px-2 py-1 border-2 border-primary">
-                  {size}
-                </span>
-              )}
+          <CardFooter className="flex flex-col items-start px-0 pt-4 pb-0">
+            <h3 className={cn("text-foreground group-hover:text-primary transition-colors leading-none mb-1", style.textClass)}>
+              {name}
+            </h3>
+            <div className="flex justify-between w-full items-center">
+              <p className={cn("text-foreground", style.priceClass)}>₱{price.toLocaleString()}</p>
+              <span className="text-[10px] font-black uppercase text-primary/40 tracking-widest">
+                SIZE: {size}
+              </span>
             </div>
           </CardFooter>
         </Card>
       </DialogTrigger>
       
-      {/* Product Detail Modal */}
       <DialogContent className="max-w-6xl p-0 overflow-hidden bg-background border-4 border-primary rounded-none shadow-luxury [&>button]:hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          {/* Modal Left: Image */}
           <div className="relative aspect-[3/4] md:aspect-auto h-[400px] md:h-full bg-muted/10">
             <Image
               src={imageUrl}
@@ -121,7 +131,7 @@ export function ProductCard({
               data-ai-hint={imageHint}
             />
             <div className="absolute top-8 left-8 bg-primary text-primary-foreground px-6 py-2 font-black italic tracking-widest uppercase text-xs">
-              ARCHIVE // {category}
+              {category}
             </div>
             
             <DialogPrimitive.Close className="absolute top-4 right-4 bg-background border-2 border-primary p-2 hover:bg-primary hover:text-primary-foreground transition-colors">
@@ -129,7 +139,6 @@ export function ProductCard({
             </DialogPrimitive.Close>
           </div>
 
-          {/* Modal Right: Content */}
           <div className="p-8 md:p-12 flex flex-col justify-center bg-background border-l-4 border-primary relative">
             <DialogHeader className="p-0 text-left mb-8">
               <div className="flex items-center gap-3 mb-6">
@@ -156,7 +165,7 @@ export function ProductCard({
                   <span className="font-black text-2xl text-foreground leading-none">{size}</span>
                 </div>
                 <div className="p-4 bg-background">
-                  <span className="text-[9px] font-black text-foreground/40 block mb-1 uppercase tracking-[0.3em]">CATEGORY</span>
+                  <span className="text-[9px] font-black text-foreground/40 block mb-1 uppercase tracking-[0.3em]">COLLECTION</span>
                   <span className="font-black text-xl text-primary leading-none italic uppercase">{category}</span>
                 </div>
               </div>
@@ -166,17 +175,6 @@ export function ProductCard({
                 <p className="text-xs font-bold leading-relaxed text-foreground/70 uppercase tracking-tight">
                   {description}
                 </p>
-              </div>
-
-              <div className="flex gap-8 border-t-2 border-primary/10 pt-6">
-                <div>
-                  <span className="text-[8px] font-black text-foreground/30 block mb-1 uppercase tracking-widest">AVAILABILITY</span>
-                  <span className="text-[10px] font-black text-primary uppercase">IN STOCK (1-OF-1)</span>
-                </div>
-                <div>
-                  <span className="text-[8px] font-black text-foreground/30 block mb-1 uppercase tracking-widest">CONDITION</span>
-                  <span className="text-[10px] font-black text-foreground uppercase">{condition}</span>
-                </div>
               </div>
             </div>
 
@@ -190,10 +188,6 @@ export function ProductCard({
                 ENQUIRE
               </Button>
             </div>
-            
-            <p className="text-[9px] font-black text-center text-foreground/20 mt-8 uppercase tracking-[0.6em]">
-              PREMIUM GLOBAL SHIPPING INCLUDED
-            </p>
           </div>
         </div>
       </DialogContent>

@@ -4,105 +4,107 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
-import { ProductCard } from '@/components/product-card';
 import { Button } from '@/components/ui/button';
-import { LayoutGrid, List, SlidersHorizontal, ChevronDown, FilterX } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { FilterX } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+// Import collection layouts
+import { LuxuryCollection } from '@/components/collections/luxury-collection';
+import { StreetwearCollection } from '@/components/collections/streetwear-collection';
+import { FormalCollection } from '@/components/collections/formal-collection';
+import { GarmentsBagsCollection } from '@/components/collections/garments-bags-collection';
 
 const MOCK_PRODUCTS = [
   {
-    id: '1',
+    id: 'lux-1',
     name: 'VINTAGE OVERSIZED BLAZER',
     price: 18500,
-    category: 'FORMAL WEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing1/400/500',
+    category: 'LUXURY',
+    imageUrl: 'https://picsum.photos/seed/clothing1/800/1000',
     imageHint: 'vintage blazer',
     condition: 'MINT',
     size: 'XL',
     description: 'A structured archive piece featuring high-grade wool and a classic silhouette.'
   },
   {
-    id: '2',
-    name: 'RAW EDGE DENIM TROUSERS',
-    price: 12400,
-    category: 'STREETWEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing2/400/500',
-    imageHint: 'denim pants',
-    condition: 'EXCELLENT',
-    size: '32',
-    description: 'Deconstructed denim with reinforced stitching and a unique raw edge finish.'
-  },
-  {
-    id: '3',
-    name: 'MONOGRAM LEATHER BELT',
-    price: 5900,
-    category: 'GARMENTS & BAG',
-    imageUrl: 'https://picsum.photos/seed/clothing3/400/500',
-    imageHint: 'leather belt',
-    condition: 'NEW',
-    size: 'OS',
-    description: 'Hand-crafted leather belt featuring our signature archive buckle.'
-  },
-  {
-    id: '4',
+    id: 'lux-2',
     name: 'DECONSTRUCTED KNIT SWEATER',
     price: 15200,
     category: 'LUXURY',
-    imageUrl: 'https://picsum.photos/seed/clothing4/400/500',
+    imageUrl: 'https://picsum.photos/seed/clothing4/800/1000',
     imageHint: 'knit sweater',
     condition: 'ARCHIVE',
-    size: 'M',
-    description: 'Complex knit patterns with intentional distress points.'
+    size: 'M'
   },
   {
-    id: '5',
+    id: 'street-1',
+    name: 'RAW EDGE DENIM TROUSERS',
+    price: 12400,
+    category: 'STREETWEAR',
+    imageUrl: 'https://picsum.photos/seed/clothing2/600/600',
+    imageHint: 'denim pants',
+    condition: 'EXCELLENT',
+    size: '32'
+  },
+  {
+    id: 'street-2',
     name: 'PANELLED CARGO PANTS',
     price: 14000,
     category: 'STREETWEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing5/400/500',
+    imageUrl: 'https://picsum.photos/seed/clothing5/600/600',
     imageHint: 'cargo pants',
     condition: 'EXCELLENT',
-    size: 'L',
-    description: 'Multi-pocket functionality meets architectural design.'
+    size: 'L'
   },
   {
-    id: '6',
-    name: 'SILVER CHAIN BRACELET',
-    price: 3800,
-    category: 'LUXURY',
-    imageUrl: 'https://picsum.photos/seed/clothing6/400/500',
-    imageHint: 'silver bracelet',
-    condition: 'MINT',
-    size: 'OS',
-    description: 'Heavyweight sterling silver chain with a custom industrial clasp.'
+    id: 'street-3',
+    name: 'STREET GRAPHIC HOODIE',
+    price: 8900,
+    category: 'STREETWEAR',
+    imageUrl: 'https://picsum.photos/seed/clothing10/600/600',
+    imageHint: 'streetwear hoodie',
+    condition: 'NEW',
+    size: 'XL'
   },
   {
-    id: '7',
+    id: 'formal-1',
     name: 'STRUCTURED WOOL COAT',
     price: 32000,
     category: 'FORMAL WEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing7/400/500',
+    imageUrl: 'https://picsum.photos/seed/clothing7/600/750',
     imageHint: 'wool coat',
     condition: 'MINT',
-    size: 'L',
-    description: 'Double-breasted formal archive piece. Exceptional drape and warmth.'
+    size: 'L'
   },
   {
-    id: '8',
+    id: 'formal-2',
+    name: 'TAILORED TUXEDO PANTS',
+    price: 14500,
+    category: 'FORMAL WEAR',
+    imageUrl: 'https://picsum.photos/seed/clothing11/600/750',
+    imageHint: 'tuxedo pants',
+    condition: 'EXCELLENT',
+    size: '30'
+  },
+  {
+    id: 'bag-1',
     name: 'CANVAS UTILITY TOTE',
     price: 9500,
     category: 'GARMENTS & BAG',
-    imageUrl: 'https://picsum.photos/seed/clothing8/400/500',
+    imageUrl: 'https://picsum.photos/seed/clothing8/800/800',
     imageHint: 'canvas tote',
     condition: 'EXCELLENT',
-    size: 'OS',
-    description: 'High-density canvas construction with leather accents and heavy hardware.'
+    size: 'OS'
+  },
+  {
+    id: 'bag-2',
+    name: 'MONOGRAM LEATHER BELT',
+    price: 5900,
+    category: 'GARMENTS & BAG',
+    imageUrl: 'https://picsum.photos/seed/clothing3/800/800',
+    imageHint: 'leather belt',
+    condition: 'NEW',
+    size: 'OS'
   }
 ];
 
@@ -110,47 +112,61 @@ function ShopContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('cat');
   
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [activeCategory, setActiveCategory] = useState<string>('LUXURY');
 
   useEffect(() => {
     if (categoryParam) {
-      setActiveCategory(categoryParam);
+      setActiveCategory(categoryParam.toUpperCase());
     } else {
-      setActiveCategory('All');
+      setActiveCategory('LUXURY');
     }
   }, [categoryParam]);
 
-  const categories = ['All', 'LUXURY', 'STREETWEAR', 'SPORTSWEAR', 'FORMAL WEAR', 'GARMENTS & BAG'];
+  const categories = ['LUXURY', 'STREETWEAR', 'SPORTSWEAR', 'FORMAL WEAR', 'GARMENTS & BAG'];
 
-  const filteredProducts = activeCategory === 'All' 
-    ? MOCK_PRODUCTS 
-    : MOCK_PRODUCTS.filter(p => p.category.toUpperCase() === activeCategory.toUpperCase());
+  const filteredProducts = MOCK_PRODUCTS.filter(p => p.category.toUpperCase() === activeCategory);
+
+  const renderCollection = () => {
+    if (activeCategory === 'SPORTSWEAR' || filteredProducts.length === 0) {
+      return (
+        <div className="py-48 text-center bg-primary/5 border-4 border-dashed border-primary/20">
+          <h3 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-foreground/20">NO PIECES FOUND <br/>IN THIS VAULT.</h3>
+          <p className="mt-4 text-[10px] font-black uppercase tracking-[0.5em] text-primary/40">CHECK BACK SOON FOR DROPS</p>
+        </div>
+      );
+    }
+
+    switch (activeCategory) {
+      case 'LUXURY':
+        return <LuxuryCollection products={filteredProducts} />;
+      case 'STREETWEAR':
+        return <StreetwearCollection products={filteredProducts} />;
+      case 'FORMAL WEAR':
+        return <FormalCollection products={filteredProducts} />;
+      case 'GARMENTS & BAG':
+        return <GarmentsBagsCollection products={filteredProducts} />;
+      default:
+        return <LuxuryCollection products={filteredProducts} />;
+    }
+  };
 
   return (
     <main className="flex-grow pt-32 pb-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-20">
           
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-4 border-primary pb-8">
-              <div>
-                <span className="text-primary font-black tracking-[0.5em] text-[10px] uppercase mb-4 block">BROWSE THE VAULT</span>
-                <h1 className="text-6xl md:text-8xl font-black font-headline text-foreground tracking-tighter uppercase italic leading-[0.8]">
-                  {activeCategory} <span className="text-primary not-italic">PIECES.</span>
-                </h1>
-              </div>
-              
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+          <div className="flex flex-col gap-12">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 border-b-2 border-primary/10 pb-8">
+              <div className="flex items-center gap-2 overflow-x-auto pb-4 md:pb-0 no-scrollbar">
                 {categories.map((cat) => (
                   <Button 
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    variant={activeCategory.toUpperCase() === cat.toUpperCase() ? "default" : "outline"}
+                    variant={activeCategory === cat ? "default" : "outline"}
                     className={cn(
                       "rounded-none px-8 py-6 font-black uppercase tracking-widest text-[10px] transition-all",
-                      activeCategory.toUpperCase() === cat.toUpperCase() 
-                        ? "bg-primary text-primary-foreground" 
+                      activeCategory === cat 
+                        ? "bg-primary text-primary-foreground shadow-pop" 
                         : "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                     )}
                   >
@@ -158,102 +174,25 @@ function ShopContent() {
                   </Button>
                 ))}
               </div>
-            </div>
-
-            <div className="flex items-center justify-between py-4 border-b-2 border-foreground/5">
+              
               <div className="flex items-center gap-4">
                 <p className="text-[10px] font-black uppercase tracking-widest text-foreground/40">
-                  <span className="text-foreground">{filteredProducts.length}</span> UNITS FOUND
+                  <span className="text-foreground">{filteredProducts.length}</span> PIECES LOADED
                 </p>
-                {activeCategory !== 'All' && (
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="h-6 text-[8px] font-black uppercase tracking-widest gap-1 p-0 hover:bg-transparent text-primary"
-                    onClick={() => setActiveCategory('All')}
-                  >
-                    <FilterX className="h-3 w-3" /> Clear Filter
-                  </Button>
-                )}
-              </div>
-              
-              <div className="flex items-center gap-6">
-                <div className="hidden md:flex items-center bg-foreground/5 p-1">
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={() => setViewMode('grid')}
-                    className={cn("h-8 w-8 rounded-none", viewMode === 'grid' ? "bg-background shadow-sm" : "text-foreground/40")}
-                  >
-                    <LayoutGrid className="h-4 w-4" />
-                  </Button>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    onClick={() => setViewMode('list')}
-                    className={cn("h-8 w-8 rounded-none", viewMode === 'list' ? "bg-background shadow-sm" : "text-foreground/40")}
-                  >
-                    <List className="h-4 w-4" />
-                  </Button>
-                </div>
-
-                <div className="h-6 w-[2px] bg-foreground/10 hidden md:block" />
-
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="gap-2 text-[10px] font-black uppercase tracking-widest p-0 hover:bg-transparent">
-                      SORT: NEWEST <ChevronDown className="h-3 w-3" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="rounded-none border-2 border-primary shadow-pop">
-                    <DropdownMenuItem className="text-[10px] font-black uppercase tracking-widest">Newest First</DropdownMenuItem>
-                    <DropdownMenuItem className="text-[10px] font-black uppercase tracking-widest">Price: Low to High</DropdownMenuItem>
-                    <DropdownMenuItem className="text-[10px] font-black uppercase tracking-widest">Price: High to Low</DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-
-                <Button variant="outline" size="sm" className="gap-2 border-2 border-primary rounded-none hidden md:flex font-black text-[10px] uppercase tracking-widest h-10 px-6 text-primary hover:bg-primary hover:text-primary-foreground">
-                  <SlidersHorizontal className="h-3 w-3" />
-                  Filters
-                </Button>
               </div>
             </div>
           </div>
 
-          {filteredProducts.length > 0 ? (
-            <div className={cn(
-              "grid gap-x-8 gap-y-16",
-              viewMode === 'grid' 
-                ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4" 
-                : "grid-cols-1"
-            )}>
-              {filteredProducts.map((product) => (
-                <ProductCard 
-                  key={product.id} 
-                  {...product} 
-                  viewMode={viewMode}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="py-40 text-center">
-              <h3 className="text-4xl font-black uppercase italic tracking-tighter text-foreground/20">NO PIECES FOUND IN THIS VAULT.</h3>
-              <Button 
-                variant="link" 
-                onClick={() => setActiveCategory('All')}
-                className="text-primary font-black uppercase tracking-widest mt-4"
-              >
-                BROWSE ALL COLLECTIONS
-              </Button>
-            </div>
-          )}
-
+          <div className="min-h-[60vh]">
+            {renderCollection()}
+          </div>
+          
           {filteredProducts.length > 0 && (
-            <div className="flex flex-col items-center mt-20 gap-6">
-              <div className="w-full max-w-md h-2 bg-foreground/5 border border-foreground/10 overflow-hidden">
-                <div className="h-full bg-primary w-full" />
+            <div className="flex flex-col items-center mt-32 gap-6">
+              <div className="w-full max-w-sm h-1 bg-primary/10 overflow-hidden">
+                <div className="h-full bg-primary w-2/3" />
               </div>
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">SHOWING {filteredProducts.length} UNITS</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/30 italic">END OF {activeCategory} ARCHIVE</p>
             </div>
           )}
         </div>
@@ -266,7 +205,7 @@ export default function ShopPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <NavBar />
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-black uppercase tracking-widest">Loading the Vault...</div>}>
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-black uppercase tracking-[0.8em] animate-pulse">INITIATING VAULT...</div>}>
         <ShopContent />
       </Suspense>
       <Footer />
