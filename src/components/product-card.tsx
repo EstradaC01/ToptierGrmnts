@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -6,7 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, ShoppingBag, Eye, ShieldCheck, Star } from 'lucide-react';
+import { MessageCircle, ShoppingBag, Eye, ShieldCheck, X } from 'lucide-react';
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cn } from '@/lib/utils';
 
 interface ProductCardProps {
@@ -102,18 +104,13 @@ export function ProductCard({
                   {size}
                 </span>
               )}
-              {isList && (
-                <Button size="sm" className="bg-foreground text-background font-black rounded-none h-12 px-8 uppercase tracking-widest shadow-pop hover:-translate-y-1 transition-transform">
-                  Add to Cart
-                </Button>
-              )}
             </div>
           </CardFooter>
         </Card>
       </DialogTrigger>
       
       {/* Product Detail Modal */}
-      <DialogContent className="max-w-6xl p-0 overflow-hidden bg-background border-4 border-foreground rounded-none shadow-luxury">
+      <DialogContent className="max-w-6xl p-0 overflow-hidden bg-background border-4 border-foreground rounded-none shadow-luxury [&>button]:hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Modal Left: Image */}
           <div className="relative aspect-[3/4] md:aspect-auto h-[400px] md:h-full bg-muted/10">
@@ -127,10 +124,15 @@ export function ProductCard({
             <div className="absolute top-8 left-8 bg-foreground text-background px-6 py-2 font-black italic tracking-widest uppercase text-xs">
               ARCHIVE // {category}
             </div>
+            
+            {/* Custom Close Icon for Modal as requested */}
+            <DialogPrimitive.Close className="absolute top-4 right-4 bg-background border-2 border-foreground p-2 hover:bg-primary hover:text-white transition-colors">
+              <X className="h-6 w-6" />
+            </DialogPrimitive.Close>
           </div>
 
           {/* Modal Right: Content */}
-          <div className="p-8 md:p-12 flex flex-col justify-center bg-background border-l-4 border-foreground">
+          <div className="p-8 md:p-12 flex flex-col justify-center bg-background border-l-4 border-foreground relative">
             <DialogHeader className="p-0 text-left mb-8">
               <div className="flex items-center gap-3 mb-6">
                 <Badge className="bg-primary text-primary-foreground hover:bg-primary border-none uppercase font-black px-4 py-1.5 text-[10px] tracking-widest">

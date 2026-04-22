@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, Suspense } from 'react';
@@ -5,7 +6,6 @@ import { useSearchParams } from 'next/navigation';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
 import { ProductCard } from '@/components/product-card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { LayoutGrid, List, SlidersHorizontal, ChevronDown, FilterX } from 'lucide-react';
 import {
@@ -16,6 +16,98 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 
+// Mock Data Implementation
+const MOCK_PRODUCTS = [
+  {
+    id: '1',
+    name: 'VINTAGE OVERSIZED BLAZER',
+    price: 18500,
+    category: 'Tops',
+    imageUrl: 'https://picsum.photos/seed/clothing1/400/500',
+    imageHint: 'vintage blazer',
+    condition: 'MINT',
+    size: 'XL',
+    description: 'A structured archive piece featuring high-grade wool and a classic silhouette. Perfect for elevated layering.'
+  },
+  {
+    id: '2',
+    name: 'RAW EDGE DENIM TROUSERS',
+    price: 12400,
+    category: 'Bottoms',
+    imageUrl: 'https://picsum.photos/seed/clothing2/400/500',
+    imageHint: 'denim pants',
+    condition: 'EXCELLENT',
+    size: '32',
+    description: 'Deconstructed denim with reinforced stitching and a unique raw edge finish. A staple for any archive collection.'
+  },
+  {
+    id: '3',
+    name: 'MONOGRAM LEATHER BELT',
+    price: 5900,
+    category: 'Accessories',
+    imageUrl: 'https://picsum.photos/seed/clothing3/400/500',
+    imageHint: 'leather belt',
+    condition: 'NEW',
+    size: 'OS',
+    description: 'Hand-crafted leather belt featuring our signature archive buckle. Authenticated luxury hardware.'
+  },
+  {
+    id: '4',
+    name: 'DECONSTRUCTED KNIT SWEATER',
+    price: 15200,
+    category: 'Tops',
+    imageUrl: 'https://picsum.photos/seed/clothing4/400/500',
+    imageHint: 'knit sweater',
+    condition: 'ARCHIVE',
+    size: 'M',
+    description: 'Complex knit patterns with intentional distress points. A rare piece representing avant-garde material exploration.'
+  },
+  {
+    id: '5',
+    name: 'PANELLED CARGO PANTS',
+    price: 14000,
+    category: 'Bottoms',
+    imageUrl: 'https://picsum.photos/seed/clothing5/400/500',
+    imageHint: 'cargo pants',
+    condition: 'EXCELLENT',
+    size: 'L',
+    description: 'Multi-pocket functionality meets architectural design. Durable technical fabric for the modern explorer.'
+  },
+  {
+    id: '6',
+    name: 'SILVER CHAIN BRACELET',
+    price: 3800,
+    category: 'Accessories',
+    imageUrl: 'https://picsum.photos/seed/clothing6/400/500',
+    imageHint: 'silver bracelet',
+    condition: 'MINT',
+    size: 'OS',
+    description: 'Heavyweight sterling silver chain with a custom industrial clasp. A bold statement accessory.'
+  },
+  {
+    id: '7',
+    name: 'STRUCTURED WOOL COAT',
+    price: 32000,
+    category: 'Tops',
+    imageUrl: 'https://picsum.photos/seed/clothing7/400/500',
+    imageHint: 'wool coat',
+    condition: 'MINT',
+    size: 'L',
+    description: 'Double-breasted formal archive piece. Exceptional drape and warmth, curated from 90s luxury runway.'
+  },
+  {
+    id: '8',
+    name: 'TONAL CANVAS TOTE',
+    price: 7500,
+    category: 'Accessories',
+    imageUrl: 'https://picsum.photos/seed/clothing8/400/500',
+    imageHint: 'canvas tote',
+    condition: 'EXCELLENT',
+    size: 'OS',
+    description: 'High-density canvas construction with leather accents. Minimalist aesthetic with maximum utility.'
+  }
+];
+
 function ShopContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('cat');
@@ -23,22 +115,12 @@ function ShopContent() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [activeCategory, setActiveCategory] = useState<string>(categoryParam || 'All');
 
-  const categories = ['All', 'Luxury', 'Streetwear', 'Sportswear', 'Garments', 'Bags'];
+  const categories = ['All', 'Tops', 'Bottoms', 'Accessories', 'Sportswear'];
 
-  const allProducts = PlaceHolderImages.map((img, index) => ({
-    id: img.id,
-    name: img.description,
-    price: 1500 + Math.floor(Math.random() * 25000),
-    category: categories[(index % (categories.length - 1)) + 1],
-    imageUrl: img.imageUrl,
-    imageHint: img.imageHint,
-    condition: ['MINT', 'EXCELLENT', 'ARCHIVE'][index % 3],
-    size: ['S', 'M', 'L', 'XL', 'OS'][index % 5],
-  }));
-
+  // Filtering Logic
   const filteredProducts = activeCategory === 'All' 
-    ? allProducts 
-    : allProducts.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
+    ? MOCK_PRODUCTS 
+    : MOCK_PRODUCTS.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
 
   return (
     <main className="flex-grow pt-32 pb-24 bg-background">
@@ -93,7 +175,6 @@ function ShopContent() {
               </div>
               
               <div className="flex items-center gap-6">
-                {/* View Switcher */}
                 <div className="hidden md:flex items-center bg-foreground/5 p-1">
                   <Button 
                     variant="ghost" 
@@ -137,23 +218,23 @@ function ShopContent() {
           </div>
 
           {/* Product Layout */}
-          <div className={cn(
-            "grid gap-x-8 gap-y-16",
-            viewMode === 'grid' 
-              ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4" 
-              : "grid-cols-1"
-          )}>
-            {filteredProducts.map((product) => (
-              <ProductCard 
-                key={product.id} 
-                {...product} 
-                viewMode={viewMode}
-              />
-            ))}
-          </div>
-
-          {/* Empty State */}
-          {filteredProducts.length === 0 && (
+          {filteredProducts.length > 0 ? (
+            <div className={cn(
+              "grid gap-x-8 gap-y-16",
+              viewMode === 'grid' 
+                ? "grid-cols-2 md:grid-cols-3 lg:grid-cols-4" 
+                : "grid-cols-1"
+            )}>
+              {filteredProducts.map((product) => (
+                <ProductCard 
+                  key={product.id} 
+                  {...product} 
+                  viewMode={viewMode}
+                />
+              ))}
+            </div>
+          ) : (
+            /* Empty State */
             <div className="py-40 text-center">
               <h3 className="text-4xl font-black uppercase italic tracking-tighter text-foreground/20">NO PIECES FOUND IN THIS VAULT.</h3>
               <Button 
@@ -166,16 +247,18 @@ function ShopContent() {
             </div>
           )}
 
-          {/* Pagination */}
-          <div className="flex flex-col items-center mt-20 gap-6">
-            <div className="w-full max-w-md h-2 bg-foreground/5 border border-foreground/10 overflow-hidden">
-              <div className="h-full bg-primary w-1/3" />
+          {/* Pagination (Only if content exists) */}
+          {filteredProducts.length > 0 && (
+            <div className="flex flex-col items-center mt-20 gap-6">
+              <div className="w-full max-w-md h-2 bg-foreground/5 border border-foreground/10 overflow-hidden">
+                <div className="h-full bg-primary w-full" />
+              </div>
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">SHOWING {filteredProducts.length} UNITS</p>
+              <Button variant="outline" size="lg" className="px-16 py-8 border-4 border-foreground font-black rounded-none uppercase tracking-[0.2em] shadow-pop transition-all hover:-translate-y-1">
+                Refresh Collection
+              </Button>
             </div>
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/40">SHOWING 12 OF 48 PIECES</p>
-            <Button variant="outline" size="lg" className="px-16 py-8 border-4 border-foreground font-black rounded-none uppercase tracking-[0.2em] shadow-pop transition-all hover:-translate-y-1">
-              Load More Pieces
-            </Button>
-          </div>
+          )}
         </div>
       </div>
     </main>
