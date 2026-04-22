@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, Suspense } from 'react';
@@ -18,7 +17,7 @@ const MOCK_PRODUCTS = [
     name: 'VINTAGE OVERSIZED BLAZER',
     price: 18500,
     category: 'LUXURY',
-    imageUrl: 'https://picsum.photos/seed/clothing1/800/1000',
+    imageUrl: 'https://www.estetestudio.com/cdn/shop/collections/IMG_0848.jpg?v=1717696982',
     imageHint: 'vintage blazer',
     condition: 'MINT',
     size: 'XL',
@@ -29,60 +28,66 @@ const MOCK_PRODUCTS = [
     name: 'DECONSTRUCTED KNIT SWEATER',
     price: 15200,
     category: 'LUXURY',
-    imageUrl: 'https://picsum.photos/seed/clothing4/800/1000',
+    imageUrl: 'https://images.garmentory.com/images/9618633/large/KHAKI-DECONSTRUCTED-KNIT-SWEATER-20230825113052.jpg?1692963055',
     imageHint: 'knit sweater',
     condition: 'ARCHIVE',
-    size: 'M'
+    size: 'M',
+    description: 'A deconstructed masterpiece with exposed seams and a unique textured finish.'
   },
   {
     id: 'street-1',
     name: 'RAW EDGE DENIM TROUSERS',
     price: 12400,
     category: 'STREETWEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing2/600/600',
+    imageUrl: 'https://us.cernucci.com/cdn/shop/files/VG-JNDE26CJM-M-LB-4_43ead5a1-8c98-4eba-818e-bc32df1372fc.jpg?v=1729257935&width=800',
     imageHint: 'denim pants',
     condition: 'EXCELLENT',
-    size: '32'
+    size: '32',
+    description: 'Street-ready denim with distressed raw edges and a relaxed urban fit.'
   },
   {
     id: 'street-2',
     name: 'PANELLED CARGO PANTS',
     price: 14000,
     category: 'STREETWEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing5/600/600',
+    imageUrl: 'https://cdn-images.farfetch-contents.com/23/17/54/21/23175421_49254077_600.jpg',
     imageHint: 'cargo pants',
     condition: 'EXCELLENT',
-    size: 'L'
+    size: 'L',
+    description: 'Multi-pocketed architectural cargo pants with panelled construction.'
   },
   {
     id: 'street-3',
     name: 'STREET GRAPHIC HOODIE',
     price: 8900,
     category: 'STREETWEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing10/600/600',
+    imageUrl: 'https://m.media-amazon.com/images/I/91ZcBqtMjoL._AC_UY1000_.jpg',
     imageHint: 'streetwear hoodie',
     condition: 'NEW',
-    size: 'XL'
+    size: 'XL',
+    description: 'Heavyweight jersey hoodie featuring bold graphic print and oversized hood.'
   },
   {
     id: 'formal-1',
     name: 'STRUCTURED WOOL COAT',
     price: 32000,
     category: 'FORMAL WEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing7/600/750',
+    imageUrl: 'https://cdn-images.farfetch-contents.com/30/37/88/03/30378803_60285961_1000.jpg',
     imageHint: 'wool coat',
     condition: 'MINT',
-    size: 'L'
+    size: 'L',
+    description: 'Double-breasted tailored wool coat for a refined formal silhouette.'
   },
   {
     id: 'formal-2',
     name: 'TAILORED TUXEDO PANTS',
     price: 14500,
     category: 'FORMAL WEAR',
-    imageUrl: 'https://picsum.photos/seed/clothing11/600/750',
+    imageUrl: 'https://content.moss.co.uk/images/extraextralarge/966892315_01.jpg',
     imageHint: 'tuxedo pants',
     condition: 'EXCELLENT',
-    size: '30'
+    size: '30',
+    description: 'Classic tuxedo trousers with silk side stripes and sharp crease.'
   },
   {
     id: 'bag-1',
@@ -92,7 +97,8 @@ const MOCK_PRODUCTS = [
     imageUrl: 'https://picsum.photos/seed/clothing8/800/800',
     imageHint: 'canvas tote',
     condition: 'EXCELLENT',
-    size: 'OS'
+    size: 'OS',
+    description: 'Durable heavyweight canvas tote with reinforced leather handles.'
   },
   {
     id: 'bag-2',
@@ -102,7 +108,8 @@ const MOCK_PRODUCTS = [
     imageUrl: 'https://picsum.photos/seed/clothing3/800/800',
     imageHint: 'leather belt',
     condition: 'NEW',
-    size: 'OS'
+    size: 'OS',
+    description: 'Premium Italian leather belt with a monogrammed brushed metal buckle.'
   }
 ];
 
@@ -126,8 +133,12 @@ function ShopContent() {
     if (activeCategory === 'SPORTSWEAR' || filteredProducts.length === 0) {
       return (
         <div className="py-48 text-center bg-primary/5 border-4 border-dashed border-primary/20">
-          <h3 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-foreground/20">NO PIECES FOUND <br/>IN THIS VAULT.</h3>
-          <p className="mt-4 text-[10px] font-black uppercase tracking-[0.5em] text-primary/40">CHECK BACK SOON FOR DROPS</p>
+          <h3 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-foreground/20">
+            NO PIECES FOUND <br/>IN THIS VAULT.
+          </h3>
+          <p className="mt-4 text-[10px] font-black uppercase tracking-[0.5em] text-primary/40">
+            CHECK BACK SOON FOR DROPS
+          </p>
         </div>
       );
     }
@@ -159,7 +170,9 @@ function ShopContent() {
               <div className="w-full max-w-sm h-1 bg-primary/10 overflow-hidden">
                 <div className="h-full bg-primary w-2/3" />
               </div>
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/30 italic">END OF {activeCategory} ARCHIVE</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/30 italic">
+                END OF {activeCategory} ARCHIVE
+              </p>
             </div>
           )}
         </div>
@@ -172,7 +185,11 @@ export default function ShopPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <NavBar />
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-black uppercase tracking-[0.8em] animate-pulse">INITIATING VAULT...</div>}>
+      <Suspense fallback={
+        <div className="min-h-screen flex items-center justify-center font-black uppercase tracking-[0.8em] animate-pulse">
+          INITIATING VAULT...
+        </div>
+      }>
         <ShopContent />
       </Suspense>
       <Footer />

@@ -10,37 +10,37 @@ import { ProductCard } from '@/components/product-card';
 export default function Home() {
   const newArrivals = [
     {
-      id: '1',
+      id: 'lux-1',
       name: 'VINTAGE OVERSIZED BLAZER',
       price: 18500,
       category: 'LUXURY',
-      imageUrl: 'https://picsum.photos/seed/clothing1/400/500',
+      imageUrl: 'https://www.estetestudio.com/cdn/shop/collections/IMG_0848.jpg?v=1717696982',
       imageHint: 'luxury formal fashion',
       condition: 'MINT',
       size: 'XL',
     },
     {
-      id: '2',
+      id: 'street-1',
       name: 'RAW EDGE DENIM TROUSERS',
       price: 12400,
       category: 'STREETWEAR',
-      imageUrl: 'https://picsum.photos/seed/clothing2/400/500',
+      imageUrl: 'https://us.cernucci.com/cdn/shop/files/VG-JNDE26CJM-M-LB-4_43ead5a1-8c98-4eba-818e-bc32df1372fc.jpg?v=1729257935&width=800',
       imageHint: 'streetwear outfit',
       condition: 'EXCELLENT',
       size: '32',
     },
     {
-      id: '3',
-      name: 'DECONSTRUCTED KNIT SWEATER',
-      price: 15200,
-      category: 'LUXURY',
-      imageUrl: 'https://picsum.photos/seed/clothing4/400/500',
+      id: 'formal-1',
+      name: 'STRUCTURED WOOL COAT',
+      price: 32000,
+      category: 'FORMAL WEAR',
+      imageUrl: 'https://cdn-images.farfetch-contents.com/30/37/88/03/30378803_60285961_1000.jpg',
       imageHint: 'luxury knitwear',
       condition: 'ARCHIVE',
-      size: 'M',
+      size: 'L',
     },
     {
-      id: '4',
+      id: 'bag-1',
       name: 'CANVAS UTILITY TOTE',
       price: 9500,
       category: 'GARMENTS & BAG',
@@ -52,11 +52,36 @@ export default function Home() {
   ];
 
   const shopCategories = [
-    { name: 'LUXURY', desc: 'ARCHIVE COLLECTIONS', image: 'https://picsum.photos/seed/lux-arch/800/800', hint: 'luxury fashion' },
-    { name: 'STREETWEAR', desc: 'LIMITED DROPS', image: 'https://picsum.photos/seed/street-drop/800/800', hint: 'streetwear outfit' },
-    { name: 'SPORTSWEAR', desc: 'PERFORMANCE ARCHIVE', image: 'https://picsum.photos/seed/sport-vibe/800/800', hint: 'vintage sport' },
-    { name: 'FORMAL WEAR', desc: 'TAILORED PIECES', image: 'https://picsum.photos/seed/formal/800/800', hint: 'formal blazer' },
-    { name: 'GARMENTS & BAG', desc: 'RARE FINDS', image: 'https://picsum.photos/seed/bags/800/800', hint: 'designer bag' },
+    { 
+      name: 'LUXURY', 
+      desc: 'ARCHIVE COLLECTIONS', 
+      image: 'https://www.estetestudio.com/cdn/shop/collections/IMG_0848.jpg?v=1717696982', 
+      hint: 'luxury fashion' 
+    },
+    { 
+      name: 'STREETWEAR', 
+      desc: 'LIMITED DROPS', 
+      image: 'https://us.cernucci.com/cdn/shop/files/VG-JNDE26CJM-M-LB-4_43ead5a1-8c98-4eba-818e-bc32df1372fc.jpg?v=1729257935&width=800', 
+      hint: 'streetwear outfit' 
+    },
+    { 
+      name: 'SPORTSWEAR', 
+      desc: 'PERFORMANCE ARCHIVE', 
+      image: 'https://picsum.photos/seed/sport-vibe/800/800', 
+      hint: 'vintage sport' 
+    },
+    { 
+      name: 'FORMAL WEAR', 
+      desc: 'TAILORED PIECES', 
+      image: 'https://cdn-images.farfetch-contents.com/30/37/88/03/30378803_60285961_1000.jpg', 
+      hint: 'formal blazer' 
+    },
+    { 
+      name: 'GARMENTS & BAG', 
+      desc: 'RARE FINDS', 
+      image: 'https://picsum.photos/seed/bags/800/800', 
+      hint: 'designer bag' 
+    },
   ];
 
   return (
@@ -176,8 +201,8 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-48 bg-primary text-primary-foreground overflow-hidden relative">
-          <div className="container mx-auto px-4 relative z-10 text-center max-w-5xl">
+        <section className="py-48 bg-primary text-primary-foreground overflow-hidden relative text-center">
+          <div className="container mx-auto px-4 relative z-10 max-w-5xl">
             <h2 className="text-8xl md:text-[10rem] font-black font-headline mb-12 uppercase italic leading-[0.7] tracking-tighter">
               BEYOND <br/>THE HYPE.
             </h2>
