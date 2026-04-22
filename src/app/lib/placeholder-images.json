@@ -1,0 +1,77 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "item-1",
+      "description": "Vintage Denim Jacket",
+      "imageUrl": "https://picsum.photos/seed/thrift1/600/800",
+      "imageHint": "vintage denim"
+    },
+    {
+      "id": "item-2",
+      "description": "Patterned Silk Scarf",
+      "imageUrl": "https://picsum.photos/seed/thrift2/600/800",
+      "imageHint": "silk scarf"
+    },
+    {
+      "id": "item-3",
+      "description": "Graphic Band Tee",
+      "imageUrl": "https://picsum.photos/seed/thrift3/600/800",
+      "imageHint": "vintage tshirt"
+    },
+    {
+      "id": "item-4",
+      "description": "Retro Windbreaker",
+      "imageUrl": "https://picsum.photos/seed/thrift4/600/800",
+      "imageHint": "retro windbreaker"
+    },
+    {
+      "id": "item-5",
+      "description": "High-waisted Trousers",
+      "imageUrl": "https://picsum.photos/seed/thrift5/600/800",
+      "imageHint": "vintage trousers"
+    },
+    {
+      "id": "item-6",
+      "description": "Leather Boots",
+      "imageUrl": "https://picsum.photos/seed/thrift6/600/800",
+      "imageHint": "leather boots"
+    },
+    {
+      "id": "item-7",
+      "description": "Flannel Shirt",
+      "imageUrl": "https://picsum.photos/seed/thrift7/600/800",
+      "imageHint": "flannel shirt"
+    },
+    {
+      "id": "item-8",
+      "description": "Knitted Sweater",
+      "imageUrl": "https://picsum.photos/seed/thrift8/600/800",
+      "imageHint": "knit sweater"
+    },
+    {
+      "id": "item-9",
+      "description": "Canvas Tote Bag",
+      "imageUrl": "https://picsum.photos/seed/thrift9/600/800",
+      "imageHint": "canvas tote"
+    },
+    {
+      "id": "item-10",
+      "description": "Floral Midi Dress",
+      "imageUrl": "https://picsum.photos/seed/thrift10/600/800",
+      "imageHint": "floral dress"
+    },
+    {
+      "id": "item-11",
+      "description": "Classic Trench Coat",
+      "imageUrl": "https://picsum.photos/seed/thrift11/600/800",
+      "imageHint": "trench coat"
+    },
+    {
+      "id": "item-12",
+      "description": "Oversized Hoodie",
+      "imageUrl": "https://picsum.photos/seed/thrift12/600/800",
+      "imageHint": "oversized hoodie"
+    }
+  ]
+}
