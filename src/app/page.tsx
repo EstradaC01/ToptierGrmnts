@@ -70,11 +70,12 @@ export default function Home() {
             <div className="max-w-4xl">
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-1.5 font-black text-[10px] mb-8 tracking-[0.4em] uppercase">
                 <ShieldCheck className="h-3 w-3" />
-                AUTHENTICATED ARCHIVE // 2024
+                AUTHENTICATED SHOP // 2026
               </div>
-              <h1 className="text-8xl md:text-[12rem] font-black font-headline leading-[0.75] mb-8 tracking-tighter uppercase italic text-foreground">
-                THE <br/>
-                <span className="text-primary not-italic">VAULT.</span>
+              <h1 className="text-8xl md:text-[10rem] font-black font-headline leading-[0.8] mb-8 tracking-tighter uppercase italic text-foreground">
+                TOP <br/>
+                TIER <br/>
+                <span className="text-primary not-italic">GRMNTS.</span>
               </h1>
               <p className="text-xl md:text-2xl text-foreground font-bold mb-12 max-w-lg leading-tight tracking-tight uppercase">
                 THE DEFINITIVE SOURCE FOR LUXURY STREETWEAR AND CURATED ARCHIVE GARMENTS.
