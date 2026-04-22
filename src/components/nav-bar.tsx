@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 
-export function NavBar() {
+function NavBarInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentCat = searchParams.get('cat');
@@ -185,5 +185,17 @@ export function NavBar() {
         </div>
       </div>
     </header>
+  );
+}
+
+export function NavBar() {
+  return (
+    <Suspense fallback={
+      <header className="fixed top-0 z-50 w-full px-4 pt-4 pointer-events-none">
+        <div className="container mx-auto max-w-7xl h-20 px-8 flex items-center bg-background border border-primary/20 shadow-luxury pointer-events-auto" />
+      </header>
+    }>
+      <NavBarInner />
+    </Suspense>
   );
 }
