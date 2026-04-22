@@ -108,7 +108,7 @@ export function ProductCard({
           </CardContent>
 
           <CardFooter className="flex flex-col items-start px-0 pt-4 pb-0">
-            <h3 className={cn("text-foreground group-hover:text-primary transition-colors leading-none mb-1 uppercase", style.textClass)}>
+            <h3 className={cn("text-foreground group-hover:text-primary transition-colors leading-none mb-1 uppercase break-words w-full", style.textClass)}>
               {name}
             </h3>
             <div className="flex justify-between w-full items-center">
@@ -121,9 +121,10 @@ export function ProductCard({
         </Card>
       </DialogTrigger>
       
-      <DialogContent className="max-w-6xl p-0 overflow-hidden bg-background border-4 border-primary rounded-none shadow-luxury [&>button]:hidden">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="relative aspect-[3/4] md:aspect-auto h-[400px] md:h-full bg-muted/10">
+      <DialogContent className="max-w-6xl w-[95vw] md:w-full p-0 overflow-y-auto bg-background border-4 border-primary rounded-none shadow-luxury [&>button]:hidden max-h-[90vh]">
+        <div className="grid grid-cols-1 md:grid-cols-2 min-h-full">
+          {/* Image Side */}
+          <div className="relative aspect-[4/5] md:aspect-auto md:h-full bg-muted/10 min-h-[300px]">
             <Image
               src={imageUrl}
               alt={name}
@@ -131,18 +132,19 @@ export function ProductCard({
               className="object-cover"
               data-ai-hint={imageHint}
             />
-            <div className="absolute top-8 left-8 bg-primary text-primary-foreground px-6 py-2 font-black italic tracking-widest uppercase text-xs">
+            <div className="absolute top-4 left-4 md:top-8 md:left-8 bg-primary text-primary-foreground px-4 py-1.5 md:px-6 md:py-2 font-black italic tracking-widest uppercase text-[10px] md:text-xs">
               {category}
             </div>
             
-            <DialogPrimitive.Close className="absolute top-4 right-4 bg-background border-2 border-primary p-2 hover:bg-primary hover:text-primary-foreground transition-colors">
-              <X className="h-6 w-6" />
+            <DialogPrimitive.Close className="absolute top-4 right-4 bg-background border-2 border-primary p-2 hover:bg-primary hover:text-primary-foreground transition-colors z-20">
+              <X className="h-5 w-5 md:h-6 md:w-6" />
             </DialogPrimitive.Close>
           </div>
 
-          <div className="p-8 md:p-12 flex flex-col justify-center bg-background border-l-4 border-primary relative">
+          {/* Details Side */}
+          <div className="p-6 md:p-12 flex flex-col bg-background border-t-4 md:border-t-0 md:border-l-4 border-primary">
             <DialogHeader className="p-0 text-left mb-8">
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
                 <Badge className="bg-primary text-primary-foreground hover:bg-primary border-none uppercase font-black px-4 py-1.5 text-[10px] tracking-widest">
                   {condition}
                 </Badge>
@@ -151,40 +153,40 @@ export function ProductCard({
                   <span className="text-[9px] font-black uppercase tracking-widest">AUTHENTICATED</span>
                 </div>
               </div>
-              <DialogTitle className="text-5xl md:text-7xl font-black font-headline text-foreground mb-4 tracking-tighter leading-[0.8] uppercase italic">
+              <DialogTitle className="text-4xl md:text-7xl font-black font-headline text-foreground mb-4 tracking-tighter leading-[0.9] uppercase italic break-words overflow-wrap-anywhere">
                 {name}
               </DialogTitle>
-              <div className="text-4xl font-black text-primary tracking-tighter">
+              <div className="text-3xl md:text-4xl font-black text-primary tracking-tighter">
                 ₱{price.toLocaleString()}
               </div>
             </DialogHeader>
 
-            <div className="space-y-8 flex-1">
+            <div className="space-y-8 flex-grow">
               <div className="grid grid-cols-2 gap-0 border-2 border-primary">
                 <div className="p-4 border-r-2 border-primary bg-primary/5">
                   <span className="text-[9px] font-black text-foreground/40 block mb-1 uppercase tracking-[0.3em]">TAGGED SIZE</span>
-                  <span className="font-black text-2xl text-foreground leading-none">{size}</span>
+                  <span className="font-black text-xl md:text-2xl text-foreground leading-none">{size}</span>
                 </div>
                 <div className="p-4 bg-background">
                   <span className="text-[9px] font-black text-foreground/40 block mb-1 uppercase tracking-[0.3em]">COLLECTION</span>
-                  <span className="font-black text-xl text-primary leading-none italic uppercase">{category}</span>
+                  <span className="font-black text-lg md:text-xl text-primary leading-none italic uppercase truncate">{category}</span>
                 </div>
               </div>
 
               <div className="space-y-4">
                 <span className="text-[10px] font-black text-foreground/40 block uppercase tracking-[0.4em]">ITEM DESCRIPTION</span>
-                <p className="text-xs font-bold leading-relaxed text-foreground/70 uppercase tracking-tight">
+                <p className="text-xs md:text-sm font-bold leading-relaxed text-foreground/70 uppercase tracking-tight whitespace-normal break-words overflow-wrap-break-word">
                   {description}
                 </p>
               </div>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-8 text-lg font-black rounded-none shadow-pop transition-transform hover:-translate-y-1">
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 pb-2">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 md:py-8 text-base md:text-lg font-black rounded-none shadow-pop transition-transform hover:-translate-y-1">
                 <ShoppingBag className="h-5 w-5 mr-3" />
                 ADD TO CART
               </Button>
-              <Button variant="outline" className="w-full py-8 text-lg font-black rounded-none border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all">
+              <Button variant="outline" className="w-full py-6 md:py-8 text-base md:text-lg font-black rounded-none border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all">
                 <MessageCircle className="h-5 w-5 mr-3" />
                 ENQUIRE
               </Button>
