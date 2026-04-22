@@ -1,10 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Star, ShieldCheck, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
 import { ProductCard } from '@/components/product-card';
+import logoImg from '@/images/logo.jpg';
 
 export default function Home() {
   const newArrivals = [
@@ -89,21 +91,41 @@ export default function Home() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-background">
-          <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
-            {/* Text Side */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 flex-1 max-w-2xl">
+        <section className="relative min-h-[100vh] flex items-center pt-32 pb-20 overflow-hidden">
+
+          {/* Full-bleed background image */}
+          <img
+            src="https://plus.unsplash.com/premium_photo-1671198905435-20f8d166efb2?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none brightness-110"
+          />
+
+          {/* White wash overlay */}
+          <div aria-hidden="true" className="absolute inset-0 bg-white/20" />
+
+          {/* Content */}
+          <div className="relative z-10 container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
+
+            {/* Text Side — frosted glass panel */}
+            <div className="hero-glass flex flex-col items-start text-left space-y-8 flex-1 max-w-2xl p-8 lg:p-10">
+
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-1.5 font-black text-[10px] tracking-[0.4em] uppercase">
                 <ShieldCheck className="h-3 w-3" />
                 AUTHENTICATED SHOP // 2026
               </div>
-              
+
               <div className="space-y-6">
-                <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-foreground">
-                  TOP <br/>
-                  TIER <br/>
-                  <span className="text-primary not-italic">GRMNTS.</span>
-                </h1>
+                <div className="relative inline-block">
+                  <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-foreground">
+                    TOP <br/>
+                    TIER <br/>
+                    <span className="text-primary not-italic">GRMNTS.</span>
+                  </h1>
+                  <div className="absolute top-[0.1em] -right-12 md:-right-15 lg:-right-20 shrink-0 rounded-full overflow-hidden border-4 border-primary shadow-luxury w-24 h-24 md:w-52 md:h-52 lg:w-64 lg:h-64">
+                    <Image src={logoImg} alt="Toptier Grmnts Logo" className="w-full h-full object-cover" />
+                  </div>
+                </div>
                 <p className="text-lg md:text-xl text-foreground/80 font-bold leading-tight tracking-tight uppercase max-w-[500px]">
                   THE DEFINITIVE SOURCE FOR LUXURY STREETWEAR AND CURATED ARCHIVE GARMENTS.
                 </p>
@@ -118,21 +140,9 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            
-            {/* Image Side */}
-            <div className="flex-1 w-full max-w-[750px] relative">
-              <div className="group overflow-hidden border-4 border-primary shadow-luxury bg-white">
-                <img
-                  src="https://plus.unsplash.com/premium_photo-1671198905435-20f8d166efb2?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0"
-                  alt="High fashion streetwear hero"
-                  className="block w-full h-auto max-h-[750px] object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground px-6 py-3 font-black text-xl rotate-3 shadow-luxury z-10">
-                EST. 2024
-              </div>
-            </div>
+
           </div>
+
         </section>
 
         {/* Category Strip */}
