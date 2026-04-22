@@ -192,12 +192,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Visit Our Shop Section */}
-        <section className="pt-20 pb-10 bg-background">
+        {/* Visit Our Studio Section */}
+        <section id="store-location" className="pt-20 pb-10 bg-background scroll-mt-24">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-6xl md:text-8xl font-black font-headline tracking-tighter uppercase italic mb-4">
-                VISIT THE <span className="text-primary">SHOP.</span>
+                VISIT THE <span className="text-primary">STUDIO.</span>
               </h2>
               <p className="text-lg md:text-xl text-foreground/60 font-bold uppercase tracking-tight">
                 Experience the collection in person.
@@ -224,12 +224,16 @@ export default function Home() {
                     <div className="bg-primary/5 p-4 border border-primary/10">
                       <Clock className="h-6 w-6 text-primary" />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 w-full">
                       <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em]">STORE HOURS</span>
-                      <p className="text-xl font-bold uppercase tracking-tight">
-                        Mon — Sat: 10AM - 8PM<br/>
-                        Sunday: Closed
-                      </p>
+                      <div className="grid grid-cols-2 gap-x-8 gap-y-1 text-sm font-bold uppercase tracking-tight max-w-xs">
+                        <span className="text-foreground/60">Mon - Fri</span>
+                        <span className="text-foreground">9:30 AM – 7:00 PM</span>
+                        <span className="text-foreground/60">Sat</span>
+                        <span className="text-foreground">10:00 AM – 5:00 PM</span>
+                        <span className="text-foreground/60">Sun</span>
+                        <span className="text-foreground">10:00 AM – 12:00 PM</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -242,7 +246,7 @@ export default function Home() {
               </div>
 
               {/* Right Side: Map Embed */}
-              <div className="relative aspect-square md:aspect-video lg:aspect-square overflow-hidden rounded-[20px] shadow-2xl border border-[#e0e0e0] group transition-all duration-500 hover:shadow-luxury">
+              <div className="relative h-[600px] overflow-hidden rounded-[20px] shadow-2xl border border-[#e0e0e0] group transition-all duration-500 hover:shadow-luxury">
                 <iframe
                   src="https://maps.google.com/maps?q=Quezon%20Boulevard%2C%20Malasiqui%2C%20Pangasinan&output=embed"
                   width="100%"
