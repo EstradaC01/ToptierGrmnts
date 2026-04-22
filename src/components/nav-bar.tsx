@@ -14,6 +14,13 @@ import {
 } from '@/components/ui/sheet';
 
 export function NavBar() {
+  const navItems = [
+    { name: 'Tops', cat: 'Tops' },
+    { name: 'Bottoms', cat: 'Bottoms' },
+    { name: 'Accessories', cat: 'Accessories' },
+    { name: 'Sportswear', cat: 'Sportswear' }
+  ];
+
   return (
     <header className="fixed top-0 z-50 w-full px-4 pt-4 pointer-events-none">
       <div className="container mx-auto max-w-7xl h-20 px-8 flex items-center justify-between gap-6 bg-background border border-foreground/10 shadow-luxury pointer-events-auto">
@@ -30,13 +37,16 @@ export function NavBar() {
                 <SheetTitle className="text-left font-black text-5xl font-headline italic tracking-tighter text-primary">TOPTIER</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-8 mt-20">
-                {['Shop', 'Luxury', 'Streetwear', 'Sports', 'Bags'].map((item) => (
+                <Link href="/shop" className="text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit">
+                  All Pieces
+                </Link>
+                {navItems.map((item) => (
                   <Link 
-                    key={item}
-                    href={`/shop?cat=${item}`} 
+                    key={item.cat}
+                    href={`/shop?cat=${item.cat}`} 
                     className="text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 ))}
               </nav>
@@ -49,10 +59,12 @@ export function NavBar() {
         </div>
 
         <nav className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.4em] text-foreground/50">
-          <Link href="/shop?cat=Luxury" className="hover:text-primary transition-colors">Luxury</Link>
-          <Link href="/shop?cat=Streetwear" className="hover:text-primary transition-colors">Streetwear</Link>
-          <Link href="/shop?cat=Sports" className="hover:text-primary transition-colors">Sportswear</Link>
-          <Link href="/shop?cat=Bags" className="hover:text-primary transition-colors">Grmnts & Bag</Link>
+          <Link href="/shop" className="hover:text-primary transition-colors">The Vault</Link>
+          {navItems.map((item) => (
+            <Link key={item.cat} href={`/shop?cat=${item.cat}`} className="hover:text-primary transition-colors">
+              {item.name}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-4">

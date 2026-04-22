@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, Twitter, MapPin, Globe, CreditCard } from 'lucide-react';
+import { Facebook, Instagram, Twitter, MapPin, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function Footer() {
@@ -28,10 +28,10 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-black mb-8 uppercase tracking-[0.4em]">COLLECTIONS</h4>
             <ul className="space-y-4 text-white/50 text-[10px] font-black uppercase tracking-widest">
-              <li><a href="/shop?cat=Luxury" className="hover:text-white transition-colors">Luxury Archive</a></li>
-              <li><a href="/shop?cat=Streetwear" className="hover:text-white transition-colors">Streetwear Drop</a></li>
-              <li><a href="/shop?cat=Sports" className="hover:text-white transition-colors">Performance Sports</a></li>
-              <li><a href="/shop?cat=Bags" className="hover:text-white transition-colors">Garments & Accessories</a></li>
+              <li><a href="/shop?cat=Tops" className="hover:text-white transition-colors">Tops</a></li>
+              <li><a href="/shop?cat=Bottoms" className="hover:text-white transition-colors">Bottoms</a></li>
+              <li><a href="/shop?cat=Accessories" className="hover:text-white transition-colors">Accessories</a></li>
+              <li><a href="/shop?cat=Sportswear" className="hover:text-white transition-colors">Sportswear</a></li>
             </ul>
           </div>
 

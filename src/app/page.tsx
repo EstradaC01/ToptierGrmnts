@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,7 +13,7 @@ export default function Home() {
     id: img.id,
     name: img.description,
     price: 1500 + Math.floor(Math.random() * 8500),
-    category: ['STREETWEAR', 'LUXURY', 'SPORTS', 'FORMAL'][index % 4],
+    category: ['Tops', 'Bottoms', 'Accessories', 'Sportswear'][index % 4],
     imageUrl: img.imageUrl,
     imageHint: "luxury fashion streetwear",
     condition: ['MINT', 'EXCELLENT', 'ARCHIVE'][index % 3],
@@ -22,10 +21,10 @@ export default function Home() {
   }));
 
   const shopCategories = [
-    { name: 'LUXURY', desc: 'ARCHIVE COLLECTIONS', image: 'https://picsum.photos/seed/lux-arch/800/800', hint: 'luxury fashion' },
-    { name: 'STREETWEAR', desc: 'LIMITED DROPS', image: 'https://picsum.photos/seed/street-drop/800/800', hint: 'streetwear outfit' },
+    { name: 'TOPS', desc: 'ARCHIVE COLLECTIONS', image: 'https://picsum.photos/seed/lux-arch/800/800', hint: 'luxury fashion' },
+    { name: 'BOTTOMS', desc: 'LIMITED DROPS', image: 'https://picsum.photos/seed/street-drop/800/800', hint: 'streetwear outfit' },
+    { name: 'ACCESSORIES', desc: 'RARE FINDS', image: 'https://picsum.photos/seed/rare-finds/800/800', hint: 'vintage garment' },
     { name: 'SPORTSWEAR', desc: 'PERFORMANCE ARCHIVE', image: 'https://picsum.photos/seed/sport-vibe/800/800', hint: 'vintage sport' },
-    { name: 'GARMENTS', desc: 'RARE PIECES', image: 'https://picsum.photos/seed/rare-finds/800/800', hint: 'vintage garment' },
   ];
 
   return (
