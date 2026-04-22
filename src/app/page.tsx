@@ -41,12 +41,12 @@ export default function Home() {
     },
     {
       id: 'bag-1',
-      name: 'CANVAS UTILITY TOTE',
-      price: 9500,
+      name: 'LEATHER TRAVEL BAG',
+      price: 24500,
       category: 'GARMENTS & BAG',
-      imageUrl: 'https://picsum.photos/seed/clothing8/400/500',
-      imageHint: 'luxury canvas bag',
-      condition: 'EXCELLENT',
+      imageUrl: 'https://vonbaer.com/cdn/shop/files/von-baer-grand-large-full-grain-leather-garment-travel-bag-tan-luxury-man-carrying-on-sunset.jpg?v=1745567636&width=500',
+      imageHint: 'luxury leather bag',
+      condition: 'NEW',
       size: 'OS',
     }
   ];
@@ -67,8 +67,8 @@ export default function Home() {
     { 
       name: 'SPORTSWEAR', 
       desc: 'PERFORMANCE ARCHIVE', 
-      image: 'https://picsum.photos/seed/sport-vibe/800/800', 
-      hint: 'vintage sport' 
+      image: 'https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto/2d0826c6-34e2-4fd8-829a-61d017dbc883/AS+M+NK+CLUB+PK+TRK+SUIT.png', 
+      hint: 'nike track suit' 
     },
     { 
       name: 'FORMAL WEAR', 
@@ -79,8 +79,8 @@ export default function Home() {
     { 
       name: 'GARMENTS & BAG', 
       desc: 'RARE FINDS', 
-      image: 'https://picsum.photos/seed/bags/800/800', 
-      hint: 'designer bag' 
+      image: 'https://vonbaer.com/cdn/shop/files/von-baer-grand-large-full-grain-leather-garment-travel-bag-tan-luxury-man-carrying-on-sunset.jpg?v=1745567636&width=500', 
+      hint: 'leather travel bag' 
     },
   ];
 

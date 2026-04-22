@@ -91,14 +91,14 @@ const MOCK_PRODUCTS = [
   },
   {
     id: 'bag-1',
-    name: 'CANVAS UTILITY TOTE',
-    price: 9500,
+    name: 'LEATHER TRAVEL BAG',
+    price: 24500,
     category: 'GARMENTS & BAG',
-    imageUrl: 'https://picsum.photos/seed/clothing8/800/800',
-    imageHint: 'canvas tote',
-    condition: 'EXCELLENT',
+    imageUrl: 'https://vonbaer.com/cdn/shop/files/von-baer-grand-large-full-grain-leather-garment-travel-bag-tan-luxury-man-carrying-on-sunset.jpg?v=1745567636&width=500',
+    imageHint: 'leather travel bag',
+    condition: 'NEW',
     size: 'OS',
-    description: 'Durable heavyweight canvas tote with reinforced leather handles.'
+    description: 'Premium full-grain leather travel bag with a refined luxury aesthetic.'
   },
   {
     id: 'bag-2',
