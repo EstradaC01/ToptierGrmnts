@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Star, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Star, ShieldCheck, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
@@ -192,19 +192,69 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Map Section */}
-        <section className="w-full mt-24 mb-0 bg-background overflow-hidden border-t-4 border-primary">
-          <div className="w-full h-[600px] relative">
-            <iframe
-              src="https://maps.google.com/maps?q=Quezon%20Boulevard%2C%20Malasiqui%2C%20Pangasinan&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full h-full border-none"
-            />
+        {/* Visit Our Shop Section */}
+        <section className="pt-20 pb-10 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-6xl md:text-8xl font-black font-headline tracking-tighter uppercase italic mb-4">
+                VISIT THE <span className="text-primary">SHOP.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-foreground/60 font-bold uppercase tracking-tight">
+                Experience the collection in person.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left Side: Text Info */}
+              <div className="space-y-12">
+                <div className="space-y-8">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/5 p-4 border border-primary/10">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em]">LOCATION</span>
+                      <p className="text-2xl font-black uppercase tracking-tighter leading-none italic">
+                        Quezon Boulevard,<br/>Malasiqui, Pangasinan
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/5 p-4 border border-primary/10">
+                      <Clock className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="space-y-2">
+                      <span className="text-[10px] font-black text-primary uppercase tracking-[0.5em]">STORE HOURS</span>
+                      <p className="text-xl font-bold uppercase tracking-tight">
+                        Mon — Sat: 10AM - 8PM<br/>
+                        Sunday: Closed
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
+                  <a href="https://www.google.com/maps/dir/?api=1&destination=Quezon+Boulevard+Malasiqui+Pangasinan" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                    GET DIRECTIONS <ArrowRight className="h-6 w-6" />
+                  </a>
+                </Button>
+              </div>
+
+              {/* Right Side: Map Embed */}
+              <div className="relative aspect-square md:aspect-video lg:aspect-square overflow-hidden rounded-[20px] shadow-2xl border border-[#e0e0e0] group transition-all duration-500 hover:shadow-luxury">
+                <iframe
+                  src="https://maps.google.com/maps?q=Quezon%20Boulevard%2C%20Malasiqui%2C%20Pangasinan&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                />
+              </div>
+            </div>
           </div>
         </section>
       </main>
