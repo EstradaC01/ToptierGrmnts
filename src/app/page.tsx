@@ -122,7 +122,7 @@ export default function Home() {
             <div className="relative w-full max-w-lg mx-auto lg:max-w-none">
               <div className="relative aspect-[3/4] group overflow-hidden border-4 border-primary shadow-luxury bg-white">
                 <Image
-                  src="https://picsum.photos/seed/fashion-hero-lux/1200/1600"
+                  src="/images/heroimage.jpg"
                   alt="High fashion streetwear hero"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -182,20 +182,22 @@ export default function Home() {
 
         {/* Product Showcase */}
         <section className="py-32 bg-background border-t border-primary/5">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
-              <div className="max-w-2xl">
+          <div className="container mx-auto px-0">
+            <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-24 gap-12 md:gap-8 text-center md:text-left px-5 md:px-4">
+              <div className="max-w-2xl flex flex-col items-center md:items-start">
                 <span className="text-primary font-black tracking-[0.5em] text-xs uppercase mb-4 block">LATEST ARRIVALS</span>
-                <h2 className="text-7xl md:text-9xl font-black font-headline text-foreground tracking-tighter uppercase leading-[0.8]">NEW <br/><span className="text-primary italic">PIECES.</span></h2>
+                <h2 className="text-7xl md:text-9xl font-black font-headline text-foreground tracking-tighter uppercase leading-[0.8]">
+                  NEW <br/><span className="text-primary italic">PIECES.</span>
+                </h2>
               </div>
-              <Button asChild variant="link" className="text-foreground font-black text-xl group p-0 hover:no-underline border-b-4 border-primary">
+              <Button asChild variant="link" className="text-foreground font-black text-xl group p-0 hover:no-underline border-b-4 border-primary w-fit">
                 <Link href="/shop?cat=LUXURY" className="flex items-center gap-3">
                   EXPLORE ALL ARCHIVES <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-2" />
                 </Link>
               </Button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16 px-4">
               {newArrivals.map((product) => (
                 <ProductCard key={product.id} {...product} />
               ))}
