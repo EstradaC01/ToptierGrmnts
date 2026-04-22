@@ -55,8 +55,8 @@ export default {
         sm: 'calc(var(--radius) - 8px)',
       },
       boxShadow: {
-        'pop': '8px 8px 0px 0px hsl(var(--primary))',
-        'pop-accent': '8px 8px 0px 0px hsl(var(--accent))',
+        'pop': '10px 10px 0px 0px hsl(var(--primary))',
+        'pop-accent': '10px 10px 0px 0px hsl(var(--accent))',
       }
     },
   },
