@@ -1,4 +1,3 @@
-
 import type {Config} from 'tailwindcss';
 
 export default {
@@ -11,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['PT Sans', 'sans-serif'],
-        headline: ['PT Sans', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        headline: ['Bricolage Grotesque', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -52,9 +51,13 @@ export default {
       },
       borderRadius: {
         lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 4px)',
+        sm: 'calc(var(--radius) - 8px)',
       },
+      boxShadow: {
+        'pop': '8px 8px 0px 0px hsl(var(--primary))',
+        'pop-accent': '8px 8px 0px 0px hsl(var(--accent))',
+      }
     },
   },
   plugins: [require('tailwindcss-animate')],
