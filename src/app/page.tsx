@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Zap, Star, ShieldCheck, Globe, Trophy } from 'lucide-react';
+import { ArrowRight, Star, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
@@ -21,35 +21,35 @@ export default function Home() {
   }));
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background">
       <NavBar />
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-white pt-24 pb-12">
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-24 pb-12">
           <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-4xl">
-              <div className="inline-flex items-center gap-2 bg-black text-white px-4 py-1.5 font-black text-[10px] mb-8 tracking-[0.4em] uppercase">
+              <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-1.5 font-black text-[10px] mb-8 tracking-[0.4em] uppercase">
                 <ShieldCheck className="h-3 w-3" />
                 AUTHENTICATED ARCHIVE // 2024
               </div>
-              <h1 className="text-8xl md:text-[14rem] font-black font-headline leading-[0.75] mb-8 tracking-tighter uppercase italic">
+              <h1 className="text-8xl md:text-[12rem] font-black font-headline leading-[0.75] mb-8 tracking-tighter uppercase italic text-foreground">
                 THE <br/>
                 <span className="text-primary not-italic">VAULT.</span>
               </h1>
-              <p className="text-xl md:text-2xl text-black font-bold mb-12 max-w-lg leading-tight tracking-tight">
+              <p className="text-xl md:text-2xl text-foreground font-bold mb-12 max-w-lg leading-tight tracking-tight uppercase">
                 THE DEFINITIVE SOURCE FOR LUXURY STREETWEAR AND CURATED ARCHIVE GARMENTS.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-black text-white hover:bg-black/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
+                <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
                   <Link href="/shop" className="flex items-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
                 </Button>
-                <Button variant="outline" size="lg" className="border-2 border-black text-black hover:bg-black hover:text-white rounded-none px-12 py-10 text-xl font-black transition-all">
+                <Button variant="outline" size="lg" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background rounded-none px-12 py-10 text-xl font-black transition-all">
                   SELL COLLECTIONS
                 </Button>
               </div>
               
-              <div className="mt-20 flex gap-12 border-t border-black/10 pt-12 hidden md:flex">
+              <div className="mt-20 flex gap-12 border-t border-foreground/10 pt-12 hidden md:flex">
                 <div className="flex flex-col gap-1">
                   <span className="text-[10px] font-black uppercase tracking-widest text-primary">GLOBAL SOURCING</span>
                   <span className="text-sm font-bold">PARIS // TOKYO // NYC</span>
@@ -66,8 +66,8 @@ export default function Home() {
             </div>
             
             <div className="relative aspect-[3/4] hidden lg:block group">
-              <div className="absolute inset-0 bg-black translate-x-4 translate-y-4" />
-              <div className="absolute inset-0 bg-white overflow-hidden border-4 border-black transition-transform duration-700 hover:scale-[1.01]">
+              <div className="absolute inset-0 bg-primary/10 translate-x-4 translate-y-4" />
+              <div className="absolute inset-0 bg-white overflow-hidden border-4 border-foreground transition-transform duration-700 hover:scale-[1.01]">
                 <Image
                   src="https://picsum.photos/seed/fashion-hero-lux/1200/1600"
                   alt="High fashion streetwear"
@@ -77,7 +77,7 @@ export default function Home() {
                   data-ai-hint="luxury fashion editorial"
                 />
               </div>
-              <div className="absolute -bottom-8 -right-8 bg-primary text-white px-8 py-4 font-black text-2xl rotate-3 shadow-luxury">
+              <div className="absolute -bottom-8 -right-8 bg-primary text-primary-foreground px-8 py-4 font-black text-2xl rotate-3 shadow-luxury">
                 EST. 2024
               </div>
             </div>
@@ -85,15 +85,15 @@ export default function Home() {
         </section>
 
         {/* Category Strip */}
-        <section className="bg-black py-4 overflow-hidden whitespace-nowrap">
+        <section className="bg-foreground py-6 overflow-hidden whitespace-nowrap">
           <div className="flex animate-marquee gap-8 items-center">
-            {[1,2,3,4,5].map((i) => (
+            {[1,2,3,4,5,6].map((i) => (
               <div key={i} className="flex gap-8 items-center">
-                <span className="text-white font-black text-4xl italic tracking-tighter">LUXURY ARCHIVE</span>
+                <span className="text-background font-black text-4xl italic tracking-tighter uppercase">LUXURY ARCHIVE</span>
                 <Star className="h-6 w-6 text-primary fill-primary" />
-                <span className="text-white font-black text-4xl italic tracking-tighter">STREETWEAR DROP</span>
+                <span className="text-background font-black text-4xl italic tracking-tighter uppercase">STREETWEAR DROP</span>
                 <Star className="h-6 w-6 text-primary fill-primary" />
-                <span className="text-white font-black text-4xl italic tracking-tighter">RARE GARMENTS</span>
+                <span className="text-background font-black text-4xl italic tracking-tighter uppercase">RARE GARMENTS</span>
                 <Star className="h-6 w-6 text-primary fill-primary" />
               </div>
             ))}
@@ -101,14 +101,14 @@ export default function Home() {
         </section>
 
         {/* Product Showcase */}
-        <section className="py-32 bg-white">
+        <section className="py-32 bg-background">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
               <div className="max-w-2xl">
                 <span className="text-primary font-black tracking-[0.5em] text-xs uppercase mb-4 block">LATEST ARRIVALS</span>
-                <h2 className="text-7xl md:text-9xl font-black font-headline text-black tracking-tighter uppercase leading-[0.8]">NEW <br/><span className="text-primary italic">PIECES.</span></h2>
+                <h2 className="text-7xl md:text-9xl font-black font-headline text-foreground tracking-tighter uppercase leading-[0.8]">NEW <br/><span className="text-primary italic">PIECES.</span></h2>
               </div>
-              <Button asChild variant="link" className="text-black font-black text-xl group p-0 hover:no-underline border-b-4 border-primary">
+              <Button asChild variant="link" className="text-foreground font-black text-xl group p-0 hover:no-underline border-b-4 border-primary">
                 <Link href="/shop" className="flex items-center gap-3">
                   EXPLORE ALL ARCHIVES <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-2" />
                 </Link>
@@ -124,15 +124,15 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-48 bg-primary text-white overflow-hidden relative">
+        <section className="py-48 bg-primary text-primary-foreground overflow-hidden relative">
           <div className="container mx-auto px-4 relative z-10 text-center max-w-5xl">
-            <h2 className="text-8xl md:text-[12rem] font-black font-headline mb-12 uppercase italic leading-[0.7] tracking-tighter">
+            <h2 className="text-8xl md:text-[10rem] font-black font-headline mb-12 uppercase italic leading-[0.7] tracking-tighter">
               BEYOND <br/>THE HYPE.
             </h2>
-            <p className="text-xl md:text-3xl text-white font-bold mb-16 max-w-3xl mx-auto leading-tight uppercase italic">
+            <p className="text-xl md:text-3xl text-primary-foreground font-bold mb-16 max-w-3xl mx-auto leading-tight uppercase italic">
               CURATING THE WORLD'S MOST SOUGHT-AFTER GARMENTS. AUTHENTICATED BY SPECIALISTS.
             </p>
-            <Button size="lg" className="bg-black text-white hover:bg-black/90 rounded-none px-20 py-12 text-3xl font-black transition-all hover:scale-105 shadow-luxury">
+            <Button size="lg" className="bg-background text-primary hover:bg-background/90 rounded-none px-20 py-12 text-3xl font-black transition-all hover:scale-105 shadow-luxury">
               JOIN THE CIRCLE
             </Button>
           </div>

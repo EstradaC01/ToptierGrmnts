@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* Pure White */
-    --foreground: 0 0% 0%; /* Pitch Black */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --background: 130 20% 95.5%; /* #F0F6F1 - Greenish White */
+    --foreground: 0 0% 10%; /* Very dark gray for readability */
+    --card: 130 20% 95.5%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
-    --primary: 144 48% 21%; /* Your Logo Forest Green: #1B4D2E */
+    --popover-foreground: 0 0% 10%;
+    --primary: 144 48% 21%; /* #1B4D2E - Forest Green */
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96%; /* Technical Light Gray */
+    --secondary: 0 0% 90%; /* Light neutral gray */
     --secondary-foreground: 144 48% 21%;
-    --muted: 0 0% 90%;
+    --muted: 0 0% 40%; /* #666666 - Neutral Gray */
     --muted-foreground: 0 0% 40%;
-    --accent: 0 0% 0%; /* Use Black as the secondary "pop" */
+    --accent: 0 0% 40%; /* Neutral Gray */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 0%; /* Bold Black Borders */
+    --border: 0 0% 20%; /* Dark borders for structure */
     --input: 0 0% 85%;
     --ring: 144 48% 21%;
-    --radius: 0rem; /* Sharp corners for a more architectural/luxury feel */
+    --radius: 0rem; /* Sharp corners for luxury architectural feel */
   }
 }
 
@@ -40,7 +40,7 @@
 }
 
 .shadow-luxury {
-  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.15);
 }
 
 .shadow-pop {
@@ -54,4 +54,14 @@
 .shadow-hover:hover {
   box-shadow: 12px 12px 0px 0px hsl(var(--primary));
   transform: translate(-4px, -4px);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
 }
