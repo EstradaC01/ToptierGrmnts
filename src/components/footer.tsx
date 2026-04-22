@@ -25,7 +25,12 @@ export function Footer() {
               <Link href="/" className="hover:text-primary-foreground/60 transition-colors w-fit underline-offset-4 hover:underline">HOME</Link>
               <Link href="/shop?cat=LUXURY" className="hover:text-primary-foreground/60 transition-colors w-fit underline-offset-4 hover:underline">COLLECTIONS</Link>
               <Link href="/shop?cat=GARMENTS & BAG" className="hover:text-primary-foreground/60 transition-colors w-fit underline-offset-4 hover:underline">GARMENTS & BAG</Link>
-              <a href="#store-location" className="flex items-center gap-2 hover:text-primary-foreground/60 transition-colors w-fit underline-offset-4 hover:underline">
+              <a 
+                href="https://maps.app.goo.gl/gauw2B16mnD1T7yw9" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-primary-foreground/60 transition-colors w-fit underline-offset-4 hover:underline"
+              >
                 FIND US <ArrowUpRight className="h-3 w-3" />
               </a>
             </nav>
