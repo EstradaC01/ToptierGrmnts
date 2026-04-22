@@ -196,7 +196,7 @@ export default function Home() {
         <section className="w-full mt-24 mb-0 bg-background overflow-hidden border-t-4 border-primary">
           <div className="w-full h-[600px] relative">
             <iframe
-              src="https://maps.google.com/maps?q=Makati%20City&output=embed"
+              src="https://maps.google.com/maps?q=Quezon%20Boulevard%2C%20Malasiqui%2C%20Pangasinan&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
