@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,6 +20,13 @@ export default function Home() {
     condition: ['MINT', 'EXCELLENT', 'ARCHIVE'][index % 3],
     size: ['S', 'M', 'L', 'XL', 'OS'][index % 5],
   }));
+
+  const shopCategories = [
+    { name: 'LUXURY', desc: 'ARCHIVE COLLECTIONS', image: 'https://picsum.photos/seed/lux-arch/800/800', hint: 'luxury fashion' },
+    { name: 'STREETWEAR', desc: 'LIMITED DROPS', image: 'https://picsum.photos/seed/street-drop/800/800', hint: 'streetwear outfit' },
+    { name: 'SPORTSWEAR', desc: 'PERFORMANCE ARCHIVE', image: 'https://picsum.photos/seed/sport-vibe/800/800', hint: 'vintage sport' },
+    { name: 'GARMENTS', desc: 'RARE PIECES', image: 'https://picsum.photos/seed/rare-finds/800/800', hint: 'vintage garment' },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -47,21 +55,6 @@ export default function Home() {
                 <Button variant="outline" size="lg" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background rounded-none px-12 py-10 text-xl font-black transition-all">
                   SELL COLLECTIONS
                 </Button>
-              </div>
-              
-              <div className="mt-20 flex gap-12 border-t border-foreground/10 pt-12 hidden md:flex">
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-primary">GLOBAL SOURCING</span>
-                  <span className="text-sm font-bold">PARIS // TOKYO // NYC</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-primary">LOGISTICS</span>
-                  <span className="text-sm font-bold">24H DISPATCH</span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-primary">QUALITY</span>
-                  <span className="text-sm font-bold">10-POINT AUTH</span>
-                </div>
               </div>
             </div>
             
@@ -100,8 +93,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Category Cards Section */}
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {shopCategories.map((cat) => (
+                <Link key={cat.name} href={`/shop?cat=${cat.name}`} className="group relative aspect-[4/5] overflow-hidden border-2 border-foreground/10 shadow-hover">
+                  <Image
+                    src={cat.image}
+                    alt={cat.name}
+                    fill
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    data-ai-hint={cat.hint}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute bottom-8 left-8 text-white">
+                    <span className="text-[10px] font-black tracking-[0.3em] uppercase opacity-70 block mb-2">{cat.desc}</span>
+                    <h3 className="text-4xl font-black italic tracking-tighter uppercase leading-none">{cat.name}</h3>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground p-2 opacity-0 group-hover:opacity-100 transition-all -translate-y-2 group-hover:translate-y-0">
+                    <ArrowRight className="h-6 w-6" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Product Showcase */}
-        <section className="py-32 bg-background">
+        <section className="py-32 bg-background border-t border-foreground/5">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
               <div className="max-w-2xl">
