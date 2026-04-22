@@ -90,24 +90,28 @@ export default function Home() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-24 pb-12">
-          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="max-w-4xl">
-              <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-1.5 font-black text-[10px] mb-8 tracking-[0.4em] uppercase">
+        <section className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-20">
+          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+              <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-1.5 font-black text-[10px] tracking-[0.4em] uppercase">
                 <ShieldCheck className="h-3 w-3" />
                 AUTHENTICATED SHOP // 2026
               </div>
-              <h1 className="text-8xl md:text-[10rem] font-black font-headline leading-[0.8] mb-8 tracking-tighter uppercase italic text-foreground">
-                TOP <br/>
-                TIER <br/>
-                <span className="text-primary not-italic">GRMNTS.</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-foreground font-bold mb-12 max-w-lg leading-tight tracking-tight uppercase">
-                THE DEFINITIVE SOURCE FOR LUXURY STREETWEAR AND CURATED ARCHIVE GARMENTS.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              
+              <div className="space-y-6 max-w-[500px]">
+                <h1 className="text-7xl md:text-8xl lg:text-[9rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-foreground">
+                  TOP <br/>
+                  TIER <br/>
+                  <span className="text-primary not-italic">GRMNTS.</span>
+                </h1>
+                <p className="text-lg md:text-xl text-foreground font-bold leading-tight tracking-tight uppercase px-4 lg:px-0">
+                  THE DEFINITIVE SOURCE FOR LUXURY STREETWEAR AND CURATED ARCHIVE GARMENTS.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 lg:px-0">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
-                  <Link href="/shop?cat=STREETWEAR" className="flex items-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
+                  <Link href="/shop?cat=STREETWEAR" className="flex items-center justify-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
                 </Button>
                 <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-none px-12 py-10 text-xl font-black transition-all">
                   SELL COLLECTIONS
@@ -115,19 +119,18 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="relative aspect-[3/4] hidden lg:block group">
-              <div className="absolute inset-0 bg-primary/10 translate-x-4 translate-y-4" />
-              <div className="absolute inset-0 bg-white overflow-hidden border-4 border-primary transition-transform duration-700 hover:scale-[1.01]">
+            <div className="relative w-full max-w-lg mx-auto lg:max-w-none">
+              <div className="relative aspect-[3/4] group overflow-hidden border-4 border-primary shadow-luxury bg-white">
                 <Image
                   src="https://picsum.photos/seed/fashion-hero-lux/1200/1600"
-                  alt="High fashion streetwear"
+                  alt="High fashion streetwear hero"
                   fill
-                  className="object-cover transition-all duration-700"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                   data-ai-hint="luxury fashion editorial"
                 />
               </div>
-              <div className="absolute -bottom-8 -right-8 bg-primary text-primary-foreground px-8 py-4 font-black text-2xl rotate-3 shadow-luxury">
+              <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-primary text-primary-foreground px-6 py-3 lg:px-8 lg:py-4 font-black text-xl lg:text-2xl rotate-3 shadow-luxury z-20">
                 EST. 2024
               </div>
             </div>
@@ -265,7 +268,7 @@ export default function Home() {
                 </div>
 
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
-                  <a href="https://www.google.com/maps/dir/?api=1&destination=Quezon+Boulevard+Malasiqui+Pangasinan" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
+                  <a href="https://www.google.com/maps/dir/?api=1&destination=Quezon+Boulevard+Malasiqui+Pangasinan" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
                     GET DIRECTIONS <ArrowRight className="h-6 w-6" />
                   </a>
                 </Button>
