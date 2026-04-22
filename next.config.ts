@@ -64,6 +64,18 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.shopify.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.spaziopritelli.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
