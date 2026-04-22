@@ -72,7 +72,7 @@ const MOCK_PRODUCTS = [
     name: 'STRUCTURED WOOL COAT',
     price: 32000,
     category: 'FORMAL WEAR',
-    imageUrl: 'https://cdn-images.farfetch-contents.com/30/37/88/03/30378803_60285961_1000.jpg',
+    imageUrl: 'https://imageb.gc-static.com/media/catalog/product/m/n/mng-structured_wool_coat-burgundy-front.jpg',
     imageHint: 'wool coat',
     condition: 'MINT',
     size: 'L',

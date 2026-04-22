@@ -34,7 +34,7 @@ export default function Home() {
       name: 'STRUCTURED WOOL COAT',
       price: 32000,
       category: 'FORMAL WEAR',
-      imageUrl: 'https://cdn-images.farfetch-contents.com/30/37/88/03/30378803_60285961_1000.jpg',
+      imageUrl: 'https://imageb.gc-static.com/media/catalog/product/m/n/mng-structured_wool_coat-burgundy-front.jpg',
       imageHint: 'luxury knitwear',
       condition: 'ARCHIVE',
       size: 'L',
@@ -73,7 +73,7 @@ export default function Home() {
     { 
       name: 'FORMAL WEAR', 
       desc: 'TAILORED PIECES', 
-      image: 'https://cdn-images.farfetch-contents.com/30/37/88/03/30378803_60285961_1000.jpg', 
+      image: 'https://imageb.gc-static.com/media/catalog/product/m/n/mng-structured_wool_coat-burgundy-front.jpg', 
       hint: 'formal blazer' 
     },
     { 
