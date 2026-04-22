@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Zap, Star, Leaf } from 'lucide-react';
+import { ArrowRight, Zap, Star, ShieldCheck, Globe, Trophy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
@@ -12,12 +12,12 @@ export default function Home() {
   const newArrivals = PlaceHolderImages.slice(0, 8).map((img, index) => ({
     id: img.id,
     name: img.description,
-    price: 150 + Math.floor(Math.random() * 850),
-    category: ['Men', 'Women', 'Kids', 'Accessories'][index % 4],
+    price: 1500 + Math.floor(Math.random() * 8500),
+    category: ['STREETWEAR', 'LUXURY', 'SPORTS', 'FORMAL'][index % 4],
     imageUrl: img.imageUrl,
-    imageHint: img.imageHint,
-    condition: ['Excellent', 'Gently Used', 'Like New'][index % 3],
-    size: ['S', 'M', 'L', 'XL', 'Free Size'][index % 5],
+    imageHint: "luxury fashion streetwear",
+    condition: ['MINT', 'EXCELLENT', 'ARCHIVE'][index % 3],
+    size: ['S', 'M', 'L', 'XL', 'OS'][index % 5],
   }));
 
   return (
@@ -26,70 +26,78 @@ export default function Home() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-[95vh] flex items-center overflow-hidden bg-background pt-24 pb-12">
-          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-3 bg-primary/10 text-primary px-6 py-2.5 rounded-full font-black text-sm mb-8 animate-pulse border border-primary/20">
-                <Leaf className="h-4 w-4" />
-                CONSCIOUS CURATION
+        <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-background pt-24 pb-12">
+          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="max-w-4xl">
+              <div className="inline-flex items-center gap-2 bg-primary text-white px-4 py-1.5 font-black text-xs mb-8 tracking-[0.3em] uppercase">
+                <ShieldCheck className="h-4 w-4" />
+                AUTHENTICATED ARCHIVE
               </div>
-              <h1 className="text-7xl md:text-[9rem] font-black font-headline leading-[0.8] mb-10 tracking-tighter uppercase italic">
-                THRIFT <br/>
-                <span className="text-primary not-italic">GREENER.</span>
+              <h1 className="text-8xl md:text-[12rem] font-black font-headline leading-[0.8] mb-8 tracking-tighter uppercase italic">
+                THE <br/>
+                <span className="text-primary not-italic">VAULT.</span>
               </h1>
-              <p className="text-2xl text-foreground/80 mb-12 max-w-xl font-medium leading-tight">
-                Quality vintage that doesn't cost the Earth. Hand-picked pieces for the modern conscious wardrobe.
+              <p className="text-xl md:text-2xl text-foreground/70 mb-12 max-w-lg font-medium leading-tight">
+                Luxury streetwear and curated garments. Hand-selected rare pieces for the modern fashion enthusiast.
               </p>
-              <div className="flex flex-col sm:flex-row gap-8">
-                <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-[2rem] px-12 py-10 text-2xl font-black shadow-pop transition-all hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[14px_14px_0px_0px_rgba(27,77,46,0.3)]">
-                  <Link href="/shop" className="flex items-center gap-3">EXPLORE DROP <ArrowRight className="h-8 w-8" /></Link>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-none px-12 py-8 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
+                  <Link href="/shop" className="flex items-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
                 </Button>
-                <Button variant="outline" size="lg" className="border-4 border-primary text-primary hover:bg-primary/5 rounded-[2rem] px-12 py-10 text-2xl font-black">
-                  SELL WITH US
+                <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary/5 rounded-none px-12 py-8 text-xl font-black">
+                  SELL COLLECTIONS
                 </Button>
+              </div>
+              
+              <div className="mt-20 flex gap-12 grayscale opacity-50 hidden md:flex">
+                <div className="flex items-center gap-2 font-black text-xs tracking-widest uppercase">
+                  <Globe className="h-4 w-4" /> Global Sourcing
+                </div>
+                <div className="flex items-center gap-2 font-black text-xs tracking-widest uppercase">
+                  <Zap className="h-4 w-4" /> Fast Logistics
+                </div>
+                <div className="flex items-center gap-2 font-black text-xs tracking-widest uppercase">
+                  <Trophy className="h-4 w-4" /> Premium Quality
+                </div>
               </div>
             </div>
             
-            <div className="relative aspect-square hidden lg:block group">
-              <div className="absolute inset-0 bg-accent rounded-[4rem] rotate-3 shadow-pop-accent opacity-20" />
-              <div className="absolute inset-0 bg-primary rounded-[4rem] -rotate-3 overflow-hidden border-8 border-white shadow-2xl transition-transform duration-500 group-hover:rotate-0">
+            <div className="relative aspect-[3/4] hidden lg:block group">
+              <div className="absolute inset-0 border-2 border-primary translate-x-4 translate-y-4" />
+              <div className="absolute inset-0 bg-white overflow-hidden border-2 border-primary transition-transform duration-700 hover:scale-[1.02]">
                 <Image
-                  src="https://picsum.photos/seed/eco-hero/1200/1200"
-                  alt="Sustainable streetwear"
+                  src="https://picsum.photos/seed/fashion-hero-lux/1200/1600"
+                  alt="High fashion streetwear"
                   fill
                   className="object-cover"
                   priority
-                  data-ai-hint="sustainable fashion"
+                  data-ai-hint="luxury fashion editorial"
                 />
               </div>
-              <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-[2.5rem] shadow-2xl border-4 border-primary rotate-12 transition-transform hover:rotate-0 duration-300">
-                <div className="flex items-center gap-1 text-primary mb-2">
-                  {[1,2,3,4,5].map(i => <Star key={i} className="h-5 w-5 fill-current" />)}
-                </div>
-                <p className="font-black text-lg text-black">"Earth friendly & fresh."</p>
-                <p className="text-sm font-bold text-primary">@sustainable_style</p>
+              <div className="absolute top-8 -right-8 bg-primary text-white px-8 py-4 font-black text-2xl rotate-90 origin-left">
+                DROP 042 // ARCHIVE
               </div>
             </div>
           </div>
         </section>
 
-        {/* Poppy Category Bubbles */}
-        <section className="py-24 bg-white border-y-8 border-primary/5">
+        {/* Category Grid */}
+        <section className="py-24 bg-white border-y border-primary/10">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-20">
-              {['Men', 'Women', 'Kids', 'Accessories'].map((cat, i) => (
-                <Link key={cat} href={`/shop?cat=${cat}`} className="group flex flex-col items-center gap-6">
-                  <div className="relative h-48 w-48 md:h-64 md:w-64 rounded-full overflow-hidden border-8 border-background shadow-2xl group-hover:scale-105 group-hover:border-primary transition-all duration-500">
-                    <Image
-                      src={`https://picsum.photos/seed/cat-eco-${i}/600/600`}
-                      alt={cat}
-                      fill
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                      data-ai-hint={`vintage ${cat}`}
-                    />
-                    <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
+              {['LUXURY', 'STREETWEAR', 'SPORTSWEAR', 'BAGS'].map((cat, i) => (
+                <Link key={cat} href={`/shop?cat=${cat}`} className="group relative h-[400px] overflow-hidden">
+                  <Image
+                    src={`https://picsum.photos/seed/lux-cat-${i}/800/1200`}
+                    alt={cat}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                    data-ai-hint={`editorial fashion ${cat}`}
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="font-black text-5xl text-white italic tracking-tighter group-hover:scale-110 transition-transform drop-shadow-2xl">{cat}</span>
                   </div>
-                  <span className="font-black text-3xl uppercase tracking-tighter group-hover:text-primary transition-colors underline decoration-transparent group-hover:decoration-primary decoration-4 underline-offset-8">{cat}</span>
                 </Link>
               ))}
             </div>
@@ -99,19 +107,18 @@ export default function Home() {
         {/* Product Showcase */}
         <section className="py-32 bg-background">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
-              <div className="max-w-2xl">
-                <h2 className="text-6xl md:text-9xl font-black font-headline text-black tracking-tighter uppercase leading-none mb-6">Latest <br/><span className="text-primary italic">Finds.</span></h2>
-                <p className="text-xl font-medium text-foreground/60 uppercase tracking-widest">New arrivals every Monday at 8pm</p>
+            <div className="flex flex-col md:flex-row items-baseline justify-between mb-24 gap-8">
+              <div>
+                <h2 className="text-7xl md:text-9xl font-black font-headline text-black tracking-tighter uppercase leading-[0.8] mb-6">NEW <br/><span className="text-primary italic">ARRIVALS.</span></h2>
               </div>
-              <Button asChild variant="link" className="text-primary font-black text-2xl group p-0 hover:no-underline mb-4">
+              <Button asChild variant="link" className="text-primary font-black text-xl group p-0 hover:no-underline">
                 <Link href="/shop" className="flex items-center gap-3">
-                  VIEW FULL ARCHIVE <ArrowRight className="h-8 w-8 transition-transform group-hover:translate-x-3" />
+                  EXPLORE ALL ARCHIVES <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-2" />
                 </Link>
               </Button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-20">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
               {newArrivals.map((product) => (
                 <ProductCard key={product.id} {...product} />
               ))}
@@ -119,21 +126,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Manifesto Section */}
-        <section className="py-32 bg-primary text-white overflow-hidden relative">
-          <div className="absolute inset-0 opacity-5 pointer-events-none select-none flex items-center justify-center whitespace-nowrap text-[30vw] font-black italic">
-            CIRCULAR
-          </div>
-          <div className="container mx-auto px-4 relative z-10 text-center max-w-5xl">
-            <h2 className="text-6xl md:text-[10rem] font-black font-headline mb-12 uppercase italic leading-[0.8]">
-              Waste <span className="text-accent underline decoration-white underline-offset-[20px]">Less.</span> Style More.
+        {/* CTA Section */}
+        <section className="py-40 bg-primary text-white overflow-hidden relative">
+          <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+            <h2 className="text-7xl md:text-9xl font-black font-headline mb-12 uppercase italic leading-[0.8] tracking-tighter">
+              BEYOND <br/>TRENDS.
             </h2>
-            <p className="text-2xl md:text-4xl text-white/80 mb-16 font-medium leading-tight max-w-4xl mx-auto">
-              Every garment we rescue is one less piece in a landfill. We're building a wardrobe that lasts generations, not seasons.
+            <p className="text-xl md:text-2xl text-white/70 mb-16 font-medium leading-tight tracking-tight uppercase">
+              Curating the world's most sought-after garments. From vintage luxury to modern streetwear icons.
             </p>
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-[2.5rem] px-16 py-12 text-3xl font-black shadow-[12px_12px_0px_0px_rgba(255,255,255,0.2)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
-              JOIN THE REVOLUTION
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-none px-16 py-10 text-2xl font-black transition-all hover:scale-105">
+              JOIN THE CIRCLE
             </Button>
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none text-[30vw] font-black italic whitespace-nowrap">
+            TOP TIER
           </div>
         </section>
       </main>

@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 130 23% 95%;
-    --foreground: 144 33% 10%;
+    --background: 130 23% 95%; /* #F0F6F1 */
+    --foreground: 144 33% 5%;
     --card: 0 0% 100%;
-    --card-foreground: 144 33% 10%;
+    --card-foreground: 144 33% 5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 144 33% 10%;
-    --primary: 144 33% 20%;
+    --popover-foreground: 144 33% 5%;
+    --primary: 144 48% 21%; /* #1B4D2E */
     --primary-foreground: 0 0% 98%;
     --secondary: 130 23% 90%;
-    --secondary-foreground: 144 33% 20%;
-    --muted: 130 23% 85%;
-    --muted-foreground: 144 10% 40%;
-    --accent: 0 0% 40%;
+    --secondary-foreground: 144 48% 21%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%; /* #666666 */
+    --accent: 0 0% 40%; /* #666666 */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 144 20% 85%;
-    --input: 144 20% 85%;
-    --ring: 144 33% 20%;
-    --radius: 1.5rem;
+    --border: 144 10% 85%;
+    --input: 144 10% 85%;
+    --ring: 144 48% 21%;
+    --radius: 0.5rem; /* Sharper corners for a more luxury feel */
   }
 }
 
@@ -35,6 +35,14 @@
     @apply bg-background text-foreground font-body antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tighter;
+    @apply font-headline tracking-tighter uppercase italic;
   }
+}
+
+.shadow-luxury {
+  box-shadow: 15px 15px 0px 0px rgba(27, 77, 46, 0.15);
+}
+
+.shadow-pop {
+  box-shadow: 8px 8px 0px 0px hsl(var(--primary));
 }

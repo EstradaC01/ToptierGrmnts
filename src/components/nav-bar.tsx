@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Search, Menu, ShoppingBag, Heart } from 'lucide-react';
+import { Search, Menu, ShoppingBag, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -15,26 +15,26 @@ import {
 
 export function NavBar() {
   return (
-    <header className="fixed top-0 z-50 w-full px-6 pt-6 pointer-events-none">
-      <div className="container mx-auto max-w-7xl h-24 px-8 flex items-center justify-between gap-6 bg-white/90 backdrop-blur-2xl border-4 border-primary shadow-[8px_8px_0px_0px_rgba(27,77,46,1)] rounded-[3rem] pointer-events-auto transition-transform hover:translate-y-[-2px]">
+    <header className="fixed top-0 z-50 w-full px-4 pt-4 pointer-events-none">
+      <div className="container mx-auto max-w-7xl h-20 px-8 flex items-center justify-between gap-6 bg-white border border-primary/10 shadow-luxury pointer-events-auto">
         <div className="flex items-center gap-6">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden h-12 w-12 rounded-2xl hover:bg-secondary">
-                <Menu className="h-8 w-8 text-primary" />
+              <Button variant="ghost" size="icon" className="md:hidden h-10 w-10">
+                <Menu className="h-6 w-6 text-primary" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-full sm:w-[450px] border-r-8 border-primary p-12 bg-background">
+            <SheetContent side="left" className="w-full sm:w-[400px] border-r border-primary/10 p-12 bg-background">
               <SheetHeader>
-                <SheetTitle className="text-left font-black text-6xl font-headline italic tracking-tighter text-primary">TOPTIER</SheetTitle>
+                <SheetTitle className="text-left font-black text-5xl font-headline italic tracking-tighter text-primary">TOPTIER</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-8 mt-20">
-                {['Home', 'Men', 'Women', 'Kids', 'Accessories'].map((item) => (
+                {['Shop', 'Luxury', 'Streetwear', 'Sports', 'Bags'].map((item) => (
                   <Link 
                     key={item}
-                    href={item === 'Home' ? '/' : `/shop?cat=${item}`} 
-                    className="text-5xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-4 border-transparent hover:border-primary pb-2 w-fit"
+                    href={`/shop?cat=${item}`} 
+                    className="text-4xl font-black hover:text-primary transition-colors uppercase italic tracking-tighter border-b-2 border-transparent hover:border-primary pb-2 w-fit"
                   >
                     {item}
                   </Link>
@@ -44,42 +44,38 @@ export function NavBar() {
           </Sheet>
           
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-4xl font-black tracking-tighter text-primary font-headline italic">TOPTIER</span>
+            <span className="text-3xl font-black tracking-tighter text-primary font-headline italic">TOPTIER</span>
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center gap-10 text-sm font-black uppercase tracking-[0.2em] text-foreground/70">
-          <Link href="/shop?cat=Men" className="hover:text-primary transition-colors hover:scale-110">Men</Link>
-          <Link href="/shop?cat=Women" className="hover:text-primary transition-colors hover:scale-110">Women</Link>
-          <Link href="/shop?cat=Kids" className="hover:text-primary transition-colors hover:scale-110">Kids</Link>
-          <Link href="/shop?cat=Accessories" className="hover:text-primary transition-colors hover:scale-110">Accessories</Link>
+        <nav className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.4em] text-foreground/50">
+          <Link href="/shop?cat=Luxury" className="hover:text-primary transition-colors">Luxury</Link>
+          <Link href="/shop?cat=Streetwear" className="hover:text-primary transition-colors">Streetwear</Link>
+          <Link href="/shop?cat=Sports" className="hover:text-primary transition-colors">Sportswear</Link>
+          <Link href="/shop?cat=Bags" className="hover:text-primary transition-colors">Grmnts & Bag</Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <div className="relative hidden lg:block w-full max-w-[240px]">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/50" />
+          <div className="relative hidden lg:block w-full max-w-[200px]">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-primary/30" />
             <Input
               type="search"
-              placeholder="Find vintage..."
-              className="pl-12 bg-secondary border-none rounded-[2rem] focus-visible:ring-4 focus-visible:ring-primary/20 h-14 text-lg font-medium"
+              placeholder="SEARCH VAULT..."
+              className="pl-10 bg-secondary/50 border-none rounded-none h-10 text-[10px] font-black uppercase tracking-widest focus-visible:ring-1 focus-visible:ring-primary/20"
             />
           </div>
           
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="h-14 w-14 rounded-full hover:bg-primary/10 hover:text-primary transition-all">
-              <Heart className="h-7 w-7" />
+          <div className="flex items-center gap-1">
+            <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-primary/5">
+              <User className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="relative h-14 w-14 rounded-full hover:bg-primary/10 hover:text-primary transition-all">
-              <ShoppingBag className="h-7 w-7" />
-              <span className="absolute top-1 right-1 h-6 w-6 bg-primary text-white rounded-full text-xs flex items-center justify-center font-black border-4 border-white">
-                3
+            <Button variant="ghost" size="icon" className="relative h-10 w-10 hover:bg-primary/5">
+              <ShoppingBag className="h-5 w-5" />
+              <span className="absolute top-1 right-1 h-4 w-4 bg-primary text-white rounded-full text-[8px] flex items-center justify-center font-black">
+                2
               </span>
             </Button>
           </div>
-          
-          <Button className="hidden sm:flex bg-primary text-white font-black rounded-[2rem] h-14 px-8 text-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all uppercase tracking-widest">
-            SELL NOW
-          </Button>
         </div>
       </div>
     </header>

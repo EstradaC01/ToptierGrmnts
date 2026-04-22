@@ -2,8 +2,8 @@ import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'TopTier Thrift | Modern Sustainable Fashion',
-  description: 'Curated thrift clothing for a new generation. Sustainable, affordable, and unapologetically stylish.',
+  title: 'TOPTIER | High-End Streetwear & Luxury Archive',
+  description: 'The definitive source for luxury, streetwear, and rare fashion garments. Curated archive for the modern enthusiast.',
 };
 
 export default function RootLayout({
