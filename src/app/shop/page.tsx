@@ -20,7 +20,7 @@ const MOCK_PRODUCTS = [
     id: '1',
     name: 'VINTAGE OVERSIZED BLAZER',
     price: 18500,
-    category: 'Tops',
+    category: 'FORMAL WEAR',
     imageUrl: 'https://picsum.photos/seed/clothing1/400/500',
     imageHint: 'vintage blazer',
     condition: 'MINT',
@@ -31,7 +31,7 @@ const MOCK_PRODUCTS = [
     id: '2',
     name: 'RAW EDGE DENIM TROUSERS',
     price: 12400,
-    category: 'Bottoms',
+    category: 'STREETWEAR',
     imageUrl: 'https://picsum.photos/seed/clothing2/400/500',
     imageHint: 'denim pants',
     condition: 'EXCELLENT',
@@ -42,7 +42,7 @@ const MOCK_PRODUCTS = [
     id: '3',
     name: 'MONOGRAM LEATHER BELT',
     price: 5900,
-    category: 'Accessories',
+    category: 'GARMENTS & BAG',
     imageUrl: 'https://picsum.photos/seed/clothing3/400/500',
     imageHint: 'leather belt',
     condition: 'NEW',
@@ -53,7 +53,7 @@ const MOCK_PRODUCTS = [
     id: '4',
     name: 'DECONSTRUCTED KNIT SWEATER',
     price: 15200,
-    category: 'Tops',
+    category: 'LUXURY',
     imageUrl: 'https://picsum.photos/seed/clothing4/400/500',
     imageHint: 'knit sweater',
     condition: 'ARCHIVE',
@@ -64,7 +64,7 @@ const MOCK_PRODUCTS = [
     id: '5',
     name: 'PANELLED CARGO PANTS',
     price: 14000,
-    category: 'Bottoms',
+    category: 'STREETWEAR',
     imageUrl: 'https://picsum.photos/seed/clothing5/400/500',
     imageHint: 'cargo pants',
     condition: 'EXCELLENT',
@@ -75,7 +75,7 @@ const MOCK_PRODUCTS = [
     id: '6',
     name: 'SILVER CHAIN BRACELET',
     price: 3800,
-    category: 'Accessories',
+    category: 'LUXURY',
     imageUrl: 'https://picsum.photos/seed/clothing6/400/500',
     imageHint: 'silver bracelet',
     condition: 'MINT',
@@ -86,7 +86,7 @@ const MOCK_PRODUCTS = [
     id: '7',
     name: 'STRUCTURED WOOL COAT',
     price: 32000,
-    category: 'Tops',
+    category: 'FORMAL WEAR',
     imageUrl: 'https://picsum.photos/seed/clothing7/400/500',
     imageHint: 'wool coat',
     condition: 'MINT',
@@ -95,14 +95,14 @@ const MOCK_PRODUCTS = [
   },
   {
     id: '8',
-    name: 'TONAL CANVAS TOTE',
-    price: 7500,
-    category: 'Accessories',
+    name: 'CANVAS UTILITY TOTE',
+    price: 9500,
+    category: 'GARMENTS & BAG',
     imageUrl: 'https://picsum.photos/seed/clothing8/400/500',
     imageHint: 'canvas tote',
     condition: 'EXCELLENT',
     size: 'OS',
-    description: 'High-density canvas construction with leather accents.'
+    description: 'High-density canvas construction with leather accents and heavy hardware.'
   }
 ];
 
@@ -113,7 +113,6 @@ function ShopContent() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  // Sync state with URL params
   useEffect(() => {
     if (categoryParam) {
       setActiveCategory(categoryParam);
@@ -122,11 +121,11 @@ function ShopContent() {
     }
   }, [categoryParam]);
 
-  const categories = ['All', 'Tops', 'Bottoms', 'Accessories', 'Sportswear'];
+  const categories = ['All', 'LUXURY', 'STREETWEAR', 'SPORTSWEAR', 'FORMAL WEAR', 'GARMENTS & BAG'];
 
   const filteredProducts = activeCategory === 'All' 
     ? MOCK_PRODUCTS 
-    : MOCK_PRODUCTS.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
+    : MOCK_PRODUCTS.filter(p => p.category.toUpperCase() === activeCategory.toUpperCase());
 
   return (
     <main className="flex-grow pt-32 pb-24 bg-background">
@@ -134,7 +133,7 @@ function ShopContent() {
         <div className="flex flex-col gap-12">
           
           <div className="flex flex-col gap-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-4 border-foreground pb-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-4 border-primary pb-8">
               <div>
                 <span className="text-primary font-black tracking-[0.5em] text-[10px] uppercase mb-4 block">BROWSE THE VAULT</span>
                 <h1 className="text-6xl md:text-8xl font-black font-headline text-foreground tracking-tighter uppercase italic leading-[0.8]">
@@ -147,12 +146,12 @@ function ShopContent() {
                   <Button 
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    variant={activeCategory.toLowerCase() === cat.toLowerCase() ? "default" : "outline"}
+                    variant={activeCategory.toUpperCase() === cat.toUpperCase() ? "default" : "outline"}
                     className={cn(
                       "rounded-none px-8 py-6 font-black uppercase tracking-widest text-[10px] transition-all",
-                      activeCategory.toLowerCase() === cat.toLowerCase() 
-                        ? "bg-foreground text-background" 
-                        : "border-2 border-foreground text-foreground hover:bg-foreground hover:text-background"
+                      activeCategory.toUpperCase() === cat.toUpperCase() 
+                        ? "bg-primary text-primary-foreground" 
+                        : "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                     )}
                   >
                     {cat}
@@ -206,14 +205,14 @@ function ShopContent() {
                       SORT: NEWEST <ChevronDown className="h-3 w-3" />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="rounded-none border-2 border-foreground shadow-pop">
+                  <DropdownMenuContent align="end" className="rounded-none border-2 border-primary shadow-pop">
                     <DropdownMenuItem className="text-[10px] font-black uppercase tracking-widest">Newest First</DropdownMenuItem>
                     <DropdownMenuItem className="text-[10px] font-black uppercase tracking-widest">Price: Low to High</DropdownMenuItem>
                     <DropdownMenuItem className="text-[10px] font-black uppercase tracking-widest">Price: High to Low</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
 
-                <Button variant="outline" size="sm" className="gap-2 border-2 border-foreground rounded-none hidden md:flex font-black text-[10px] uppercase tracking-widest h-10 px-6">
+                <Button variant="outline" size="sm" className="gap-2 border-2 border-primary rounded-none hidden md:flex font-black text-[10px] uppercase tracking-widest h-10 px-6 text-primary hover:bg-primary hover:text-primary-foreground">
                   <SlidersHorizontal className="h-3 w-3" />
                   Filters
                 </Button>

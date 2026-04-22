@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -47,14 +46,14 @@ export function ProductCard({
         )}>
           {/* Image Container */}
           <CardContent className={cn(
-            "p-0 relative overflow-hidden bg-muted/5 border-2 border-foreground/10 transition-all duration-300 group-hover:shadow-[8px_8px_0px_0px_hsl(var(--primary))]",
+            "p-0 relative overflow-hidden bg-muted/5 border-2 border-primary/20 transition-all duration-300 group-hover:shadow-[8px_8px_0px_0px_hsl(var(--primary))]",
             isList ? "w-48 h-48 shrink-0" : "aspect-[3/4] w-full"
           )}>
             <Image
               src={imageUrl}
               alt={name}
               fill
-              className="object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
+              className="object-cover transition-all duration-700 group-hover:scale-105"
               data-ai-hint={imageHint}
               sizes={isList ? "192px" : "(max-width: 768px) 50vw, 25vw"}
             />
@@ -85,7 +84,7 @@ export function ProductCard({
                 isList ? "text-3xl" : "text-2xl"
               )}>{name}</h3>
               {isList && (
-                <Badge variant="outline" className="border-2 border-foreground font-black px-2 py-0.5 text-[8px] tracking-widest uppercase">
+                <Badge variant="outline" className="border-2 border-primary font-black px-2 py-0.5 text-[8px] tracking-widest uppercase text-primary">
                   {condition}
                 </Badge>
               )}
@@ -100,7 +99,7 @@ export function ProductCard({
                 {isList && <p className="text-[10px] font-bold text-foreground/40 mt-1 uppercase tracking-widest">SIZE: {size}</p>}
               </div>
               {!isList && (
-                <span className="text-[9px] font-black uppercase text-foreground/40 bg-foreground/5 px-2 py-1 border-2 border-foreground">
+                <span className="text-[9px] font-black uppercase text-primary bg-primary/5 px-2 py-1 border-2 border-primary">
                   {size}
                 </span>
               )}
@@ -110,7 +109,7 @@ export function ProductCard({
       </DialogTrigger>
       
       {/* Product Detail Modal */}
-      <DialogContent className="max-w-6xl p-0 overflow-hidden bg-background border-4 border-foreground rounded-none shadow-luxury [&>button]:hidden">
+      <DialogContent className="max-w-6xl p-0 overflow-hidden bg-background border-4 border-primary rounded-none shadow-luxury [&>button]:hidden">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Modal Left: Image */}
           <div className="relative aspect-[3/4] md:aspect-auto h-[400px] md:h-full bg-muted/10">
@@ -121,18 +120,17 @@ export function ProductCard({
               className="object-cover"
               data-ai-hint={imageHint}
             />
-            <div className="absolute top-8 left-8 bg-foreground text-background px-6 py-2 font-black italic tracking-widest uppercase text-xs">
+            <div className="absolute top-8 left-8 bg-primary text-primary-foreground px-6 py-2 font-black italic tracking-widest uppercase text-xs">
               ARCHIVE // {category}
             </div>
             
-            {/* Custom Close Icon for Modal as requested */}
-            <DialogPrimitive.Close className="absolute top-4 right-4 bg-background border-2 border-foreground p-2 hover:bg-primary hover:text-white transition-colors">
+            <DialogPrimitive.Close className="absolute top-4 right-4 bg-background border-2 border-primary p-2 hover:bg-primary hover:text-primary-foreground transition-colors">
               <X className="h-6 w-6" />
             </DialogPrimitive.Close>
           </div>
 
           {/* Modal Right: Content */}
-          <div className="p-8 md:p-12 flex flex-col justify-center bg-background border-l-4 border-foreground relative">
+          <div className="p-8 md:p-12 flex flex-col justify-center bg-background border-l-4 border-primary relative">
             <DialogHeader className="p-0 text-left mb-8">
               <div className="flex items-center gap-3 mb-6">
                 <Badge className="bg-primary text-primary-foreground hover:bg-primary border-none uppercase font-black px-4 py-1.5 text-[10px] tracking-widest">
@@ -152,9 +150,8 @@ export function ProductCard({
             </DialogHeader>
 
             <div className="space-y-8 flex-1">
-              {/* Product Info Grid */}
-              <div className="grid grid-cols-2 gap-0 border-2 border-foreground">
-                <div className="p-4 border-r-2 border-foreground bg-muted/5">
+              <div className="grid grid-cols-2 gap-0 border-2 border-primary">
+                <div className="p-4 border-r-2 border-primary bg-primary/5">
                   <span className="text-[9px] font-black text-foreground/40 block mb-1 uppercase tracking-[0.3em]">TAGGED SIZE</span>
                   <span className="font-black text-2xl text-foreground leading-none">{size}</span>
                 </div>
@@ -164,7 +161,6 @@ export function ProductCard({
                 </div>
               </div>
 
-              {/* Description */}
               <div className="space-y-4">
                 <span className="text-[10px] font-black text-foreground/40 block uppercase tracking-[0.4em]">ITEM DESCRIPTION</span>
                 <p className="text-xs font-bold leading-relaxed text-foreground/70 uppercase tracking-tight">
@@ -172,8 +168,7 @@ export function ProductCard({
                 </p>
               </div>
 
-              {/* Metadata */}
-              <div className="flex gap-8 border-t-2 border-foreground/5 pt-6">
+              <div className="flex gap-8 border-t-2 border-primary/10 pt-6">
                 <div>
                   <span className="text-[8px] font-black text-foreground/30 block mb-1 uppercase tracking-widest">AVAILABILITY</span>
                   <span className="text-[10px] font-black text-primary uppercase">IN STOCK (1-OF-1)</span>
@@ -185,13 +180,12 @@ export function ProductCard({
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Button className="w-full bg-foreground hover:bg-foreground/90 text-background py-8 text-lg font-black rounded-none shadow-pop transition-transform hover:-translate-y-1">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-8 text-lg font-black rounded-none shadow-pop transition-transform hover:-translate-y-1">
                 <ShoppingBag className="h-5 w-5 mr-3" />
                 ADD TO CART
               </Button>
-              <Button variant="outline" className="w-full py-8 text-lg font-black rounded-none border-2 border-foreground text-foreground hover:bg-foreground hover:text-background transition-all">
+              <Button variant="outline" className="w-full py-8 text-lg font-black rounded-none border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all">
                 <MessageCircle className="h-5 w-5 mr-3" />
                 ENQUIRE
               </Button>

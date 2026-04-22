@@ -6,25 +6,57 @@ import { Button } from '@/components/ui/button';
 import { NavBar } from '@/components/nav-bar';
 import { Footer } from '@/components/footer';
 import { ProductCard } from '@/components/product-card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function Home() {
-  const newArrivals = PlaceHolderImages.slice(0, 8).map((img, index) => ({
-    id: img.id,
-    name: img.description,
-    price: 1500 + Math.floor(Math.random() * 8500),
-    category: ['Tops', 'Bottoms', 'Accessories', 'Sportswear'][index % 4],
-    imageUrl: img.imageUrl,
-    imageHint: "luxury fashion streetwear",
-    condition: ['MINT', 'EXCELLENT', 'ARCHIVE'][index % 3],
-    size: ['S', 'M', 'L', 'XL', 'OS'][index % 5],
-  }));
+  const newArrivals = [
+    {
+      id: '1',
+      name: 'VINTAGE OVERSIZED BLAZER',
+      price: 18500,
+      category: 'FORMAL WEAR',
+      imageUrl: 'https://picsum.photos/seed/clothing1/400/500',
+      imageHint: 'luxury formal fashion',
+      condition: 'MINT',
+      size: 'XL',
+    },
+    {
+      id: '2',
+      name: 'RAW EDGE DENIM TROUSERS',
+      price: 12400,
+      category: 'STREETWEAR',
+      imageUrl: 'https://picsum.photos/seed/clothing2/400/500',
+      imageHint: 'streetwear outfit',
+      condition: 'EXCELLENT',
+      size: '32',
+    },
+    {
+      id: '3',
+      name: 'DECONSTRUCTED KNIT SWEATER',
+      price: 15200,
+      category: 'LUXURY',
+      imageUrl: 'https://picsum.photos/seed/clothing4/400/500',
+      imageHint: 'luxury knitwear',
+      condition: 'ARCHIVE',
+      size: 'M',
+    },
+    {
+      id: '4',
+      name: 'CANVAS UTILITY TOTE',
+      price: 9500,
+      category: 'GARMENTS & BAG',
+      imageUrl: 'https://picsum.photos/seed/clothing8/400/500',
+      imageHint: 'luxury canvas bag',
+      condition: 'EXCELLENT',
+      size: 'OS',
+    }
+  ];
 
   const shopCategories = [
-    { name: 'TOPS', desc: 'ARCHIVE COLLECTIONS', image: 'https://picsum.photos/seed/lux-arch/800/800', hint: 'luxury fashion' },
-    { name: 'BOTTOMS', desc: 'LIMITED DROPS', image: 'https://picsum.photos/seed/street-drop/800/800', hint: 'streetwear outfit' },
-    { name: 'ACCESSORIES', desc: 'RARE FINDS', image: 'https://picsum.photos/seed/rare-finds/800/800', hint: 'vintage garment' },
+    { name: 'LUXURY', desc: 'ARCHIVE COLLECTIONS', image: 'https://picsum.photos/seed/lux-arch/800/800', hint: 'luxury fashion' },
+    { name: 'STREETWEAR', desc: 'LIMITED DROPS', image: 'https://picsum.photos/seed/street-drop/800/800', hint: 'streetwear outfit' },
     { name: 'SPORTSWEAR', desc: 'PERFORMANCE ARCHIVE', image: 'https://picsum.photos/seed/sport-vibe/800/800', hint: 'vintage sport' },
+    { name: 'FORMAL WEAR', desc: 'TAILORED PIECES', image: 'https://picsum.photos/seed/formal/800/800', hint: 'formal blazer' },
+    { name: 'GARMENTS & BAG', desc: 'RARE FINDS', image: 'https://picsum.photos/seed/bags/800/800', hint: 'designer bag' },
   ];
 
   return (
@@ -48,10 +80,10 @@ export default function Home() {
                 THE DEFINITIVE SOURCE FOR LUXURY STREETWEAR AND CURATED ARCHIVE GARMENTS.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
                   <Link href="/shop" className="flex items-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
                 </Button>
-                <Button variant="outline" size="lg" className="border-2 border-foreground text-foreground hover:bg-foreground hover:text-background rounded-none px-12 py-10 text-xl font-black transition-all">
+                <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-none px-12 py-10 text-xl font-black transition-all">
                   SELL COLLECTIONS
                 </Button>
               </div>
@@ -59,12 +91,12 @@ export default function Home() {
             
             <div className="relative aspect-[3/4] hidden lg:block group">
               <div className="absolute inset-0 bg-primary/10 translate-x-4 translate-y-4" />
-              <div className="absolute inset-0 bg-white overflow-hidden border-4 border-foreground transition-transform duration-700 hover:scale-[1.01]">
+              <div className="absolute inset-0 bg-white overflow-hidden border-4 border-primary transition-transform duration-700 hover:scale-[1.01]">
                 <Image
                   src="https://picsum.photos/seed/fashion-hero-lux/1200/1600"
                   alt="High fashion streetwear"
                   fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="object-cover transition-all duration-700"
                   priority
                   data-ai-hint="luxury fashion editorial"
                 />
@@ -77,16 +109,16 @@ export default function Home() {
         </section>
 
         {/* Category Strip */}
-        <section className="bg-foreground py-6 overflow-hidden whitespace-nowrap">
+        <section className="bg-primary py-6 overflow-hidden whitespace-nowrap">
           <div className="flex animate-marquee gap-8 items-center">
             {[1,2,3,4,5,6].map((i) => (
               <div key={i} className="flex gap-8 items-center">
-                <span className="text-background font-black text-4xl italic tracking-tighter uppercase">LUXURY ARCHIVE</span>
-                <Star className="h-6 w-6 text-primary fill-primary" />
-                <span className="text-background font-black text-4xl italic tracking-tighter uppercase">STREETWEAR DROP</span>
-                <Star className="h-6 w-6 text-primary fill-primary" />
-                <span className="text-background font-black text-4xl italic tracking-tighter uppercase">RARE GARMENTS</span>
-                <Star className="h-6 w-6 text-primary fill-primary" />
+                <span className="text-primary-foreground font-black text-4xl italic tracking-tighter uppercase">LUXURY ARCHIVE</span>
+                <Star className="h-6 w-6 text-primary-foreground fill-primary-foreground" />
+                <span className="text-primary-foreground font-black text-4xl italic tracking-tighter uppercase">STREETWEAR DROP</span>
+                <Star className="h-6 w-6 text-primary-foreground fill-primary-foreground" />
+                <span className="text-primary-foreground font-black text-4xl italic tracking-tighter uppercase">RARE GARMENTS</span>
+                <Star className="h-6 w-6 text-primary-foreground fill-primary-foreground" />
               </div>
             ))}
           </div>
@@ -95,14 +127,14 @@ export default function Home() {
         {/* Category Cards Section */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {shopCategories.map((cat) => (
-                <Link key={cat.name} href={`/shop?cat=${cat.name}`} className="group relative aspect-[4/5] overflow-hidden border-2 border-foreground/10 shadow-hover">
+                <Link key={cat.name} href={`/shop?cat=${cat.name}`} className="group relative aspect-[4/5] overflow-hidden border-2 border-primary/10 shadow-hover">
                   <Image
                     src={cat.image}
                     alt={cat.name}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    className="object-cover transition-all duration-700 group-hover:scale-105"
                     data-ai-hint={cat.hint}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -120,7 +152,7 @@ export default function Home() {
         </section>
 
         {/* Product Showcase */}
-        <section className="py-32 bg-background border-t border-foreground/5">
+        <section className="py-32 bg-background border-t border-primary/5">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
               <div className="max-w-2xl">

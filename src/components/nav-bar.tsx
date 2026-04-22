@@ -15,15 +15,16 @@ import {
 
 export function NavBar() {
   const navItems = [
-    { name: 'Tops', cat: 'Tops' },
-    { name: 'Bottoms', cat: 'Bottoms' },
-    { name: 'Accessories', cat: 'Accessories' },
-    { name: 'Sportswear', cat: 'Sportswear' }
+    { name: 'LUXURY', cat: 'LUXURY' },
+    { name: 'STREETWEAR', cat: 'STREETWEAR' },
+    { name: 'SPORTSWEAR', cat: 'SPORTSWEAR' },
+    { name: 'FORMAL WEAR', cat: 'FORMAL WEAR' },
+    { name: 'GARMENTS & BAG', cat: 'GARMENTS & BAG' }
   ];
 
   return (
     <header className="fixed top-0 z-50 w-full px-4 pt-4 pointer-events-none">
-      <div className="container mx-auto max-w-7xl h-20 px-8 flex items-center justify-between gap-6 bg-background border border-foreground/10 shadow-luxury pointer-events-auto">
+      <div className="container mx-auto max-w-7xl h-20 px-8 flex items-center justify-between gap-6 bg-background border border-primary/20 shadow-luxury pointer-events-auto">
         <div className="flex items-center gap-6">
           <Sheet>
             <SheetTrigger asChild>
@@ -79,10 +80,10 @@ export function NavBar() {
           
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-primary/5">
-              <User className="h-5 w-5" />
+              <User className="h-5 w-5 text-primary" />
             </Button>
             <Button variant="ghost" size="icon" className="relative h-10 w-10 hover:bg-primary/5">
-              <ShoppingBag className="h-5 w-5" />
+              <ShoppingBag className="h-5 w-5 text-primary" />
               <span className="absolute top-1 right-1 h-4 w-4 bg-primary text-primary-foreground rounded-full text-[8px] flex items-center justify-center font-black">
                 2
               </span>
