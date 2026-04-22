@@ -123,7 +123,7 @@ export default function Home() {
             <div className="flex-1 w-full max-w-[600px] relative">
               <div className="group overflow-hidden border-4 border-primary shadow-luxury bg-white">
                 <img
-                  src="https://ibb.co/9mSPp349"
+                  src="https://plus.unsplash.com/premium_photo-1671198905435-20f8d166efb2?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0"
                   alt="High fashion streetwear hero"
                   className="block w-full h-auto max-h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
