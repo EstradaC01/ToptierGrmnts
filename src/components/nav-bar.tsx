@@ -1,8 +1,8 @@
-
 "use client";
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Search, Menu, ShoppingBag, User, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -27,6 +27,8 @@ export function NavBar() {
   const searchParams = useSearchParams();
   const currentCat = searchParams.get('cat');
 
+  const LOGO_URL = "https://scontent.fbag6-1.fna.fbcdn.net/v/t39.30808-6/631350795_26088665934078759_4476905757691908445_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=53a332&_nc_eui2=AeHgH2yhgjDB73pZJOp16B-e1UyRbJ9rLI_VTJFsn2ssj64JEgy-aqrt-uPhjMc6ng0-C3nXCWSBKVHYTpcST3ob&_nc_ohc=ZvV21inMqIQQ7kNvwGAD-iW&_nc_oc=AdruVHYbj0myQHRwQ1yUMPYhw0GiT2OO3Y5AnPOdaEZ4E2X63pGIMLRYAFtl7ruuNPY&_nc_zt=23&_nc_ht=scontent.fbag6-1.fna&_nc_gid=MYkGtIFYfHd5rRDcyCcr1w&_nc_ss=7a3a8&oh=00_Af0s_mI_AJ_lY1qkBVi8auwtSpvZcTN-QFYxWW8NIBfRog&oe=69EEFF5C";
+
   const collections = [
     { name: 'LUXURY', cat: 'LUXURY' },
     { name: 'STREETWEAR', cat: 'STREETWEAR' },
@@ -50,9 +52,19 @@ export function NavBar() {
             </SheetTrigger>
             <SheetContent side="left" className="w-full sm:w-[400px] border-r border-primary/10 p-12 bg-background">
               <SheetHeader>
-                <SheetTitle className="text-left font-black text-5xl font-headline italic tracking-tighter text-primary uppercase">TOPTIER</SheetTitle>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="relative h-16 w-16 rounded-full border border-primary/10 overflow-hidden shrink-0">
+                    <Image
+                      src={LOGO_URL}
+                      alt="TOPTIER Logo"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <SheetTitle className="text-left font-black text-4xl font-headline italic tracking-tighter text-primary uppercase">TOPTIER</SheetTitle>
+                </div>
               </SheetHeader>
-              <nav className="flex flex-col gap-8 mt-20">
+              <nav className="flex flex-col gap-8 mt-12">
                 <Link 
                   href="/" 
                   className={cn(
@@ -90,7 +102,15 @@ export function NavBar() {
           </Sheet>
           
           <div className="flex items-center gap-2 select-none">
-            <span className="text-3xl font-black tracking-tighter text-primary font-headline italic uppercase">TOPTIER</span>
+            <div className="relative h-12 w-12 rounded-full border border-primary/10 overflow-hidden bg-muted/5">
+              <Image
+                src={LOGO_URL}
+                alt="TOPTIER Logo"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
 
