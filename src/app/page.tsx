@@ -89,26 +89,27 @@ export default function Home() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-20">
-          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+        <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-background">
+          <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-16">
+            {/* Text Side */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 flex-1 max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-1.5 font-black text-[10px] tracking-[0.4em] uppercase">
                 <ShieldCheck className="h-3 w-3" />
                 AUTHENTICATED SHOP // 2026
               </div>
               
-              <div className="space-y-6 max-w-[500px]">
-                <h1 className="text-7xl md:text-8xl lg:text-[9rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-foreground">
+              <div className="space-y-6">
+                <h1 className="text-6xl md:text-8xl lg:text-[8rem] font-black font-headline leading-[0.85] tracking-tighter uppercase italic text-foreground">
                   TOP <br/>
                   TIER <br/>
                   <span className="text-primary not-italic">GRMNTS.</span>
                 </h1>
-                <p className="text-lg md:text-xl text-foreground font-bold leading-tight tracking-tight uppercase px-4 lg:px-0">
+                <p className="text-lg md:text-xl text-foreground/80 font-bold leading-tight tracking-tight uppercase max-w-[500px]">
                   THE DEFINITIVE SOURCE FOR LUXURY STREETWEAR AND CURATED ARCHIVE GARMENTS.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 lg:px-0">
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
                   <Link href="/shop?cat=STREETWEAR" className="flex items-center justify-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
                 </Button>
@@ -118,15 +119,16 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="relative w-full max-w-lg mx-auto lg:max-w-none">
+            {/* Image Side */}
+            <div className="flex-1 w-full max-w-[600px] relative">
               <div className="group overflow-hidden border-4 border-primary shadow-luxury bg-white">
                 <img
-                  src="/images/heroimage.jpg"
+                  src="https://postimg.cc/RWYvKvc6"
                   alt="High fashion streetwear hero"
                   className="block w-full h-auto max-h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-primary text-primary-foreground px-6 py-3 lg:px-8 lg:py-4 font-black text-xl lg:text-2xl rotate-3 shadow-luxury z-20">
+              <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground px-6 py-3 font-black text-xl rotate-3 shadow-luxury z-10">
                 EST. 2024
               </div>
             </div>
