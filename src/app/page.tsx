@@ -194,16 +194,16 @@ export default function Home() {
 
         {/* Map Section */}
         <section className="w-full mt-24 mb-0 bg-background overflow-hidden border-t-4 border-primary">
-          <div className="w-full h-[450px] relative group">
+          <div className="w-full h-[600px] relative">
             <iframe
-              src="http://maps.google.com/maps?q=0&output=embed"
+              src="https://maps.google.com/maps?q=Makati%20City&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen={false}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="grayscale transition-all duration-700 group-hover:grayscale-0"
+              className="w-full h-full border-none"
             />
           </div>
         </section>
