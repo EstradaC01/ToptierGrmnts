@@ -90,7 +90,7 @@ export default function Home() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-background">
-          <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-16">
+          <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
             {/* Text Side */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 flex-1 max-w-2xl">
               <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 py-1.5 font-black text-[10px] tracking-[0.4em] uppercase">
@@ -120,12 +120,12 @@ export default function Home() {
             </div>
             
             {/* Image Side */}
-            <div className="flex-1 w-full max-w-[600px] relative">
+            <div className="flex-1 w-full max-w-[750px] relative">
               <div className="group overflow-hidden border-4 border-primary shadow-luxury bg-white">
                 <img
                   src="https://plus.unsplash.com/premium_photo-1671198905435-20f8d166efb2?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0"
                   alt="High fashion streetwear hero"
-                  className="block w-full h-auto max-h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="block w-full h-auto max-h-[750px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground px-6 py-3 font-black text-xl rotate-3 shadow-luxury z-10">
