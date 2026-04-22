@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Star, ShieldCheck, MapPin, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -120,14 +119,11 @@ export default function Home() {
             </div>
             
             <div className="relative w-full max-w-lg mx-auto lg:max-w-none">
-              <div className="relative aspect-[3/4] group overflow-hidden border-4 border-primary shadow-luxury bg-white">
-                <Image
+              <div className="group overflow-hidden border-4 border-primary shadow-luxury bg-white">
+                <img
                   src="/images/heroimage.jpg"
                   alt="High fashion streetwear hero"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  priority
-                  data-ai-hint="luxury fashion editorial"
+                  className="block w-full h-auto max-h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-primary text-primary-foreground px-6 py-3 lg:px-8 lg:py-4 font-black text-xl lg:text-2xl rotate-3 shadow-luxury z-20">
@@ -159,12 +155,10 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               {shopCategories.map((cat) => (
                 <Link key={cat.name} href={`/shop?cat=${cat.name}`} className="group relative aspect-[4/5] overflow-hidden border-2 border-primary/10 shadow-hover">
-                  <Image
+                  <img
                     src={cat.image}
                     alt={cat.name}
-                    fill
-                    className="object-cover transition-all duration-700 group-hover:scale-105"
-                    data-ai-hint={cat.hint}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                   <div className="absolute bottom-8 left-8 text-white">
