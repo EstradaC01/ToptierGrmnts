@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 130 23% 95%; /* #F0F6F1 */
-    --foreground: 144 33% 5%;
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 0 0% 0%; /* Pitch Black */
     --card: 0 0% 100%;
-    --card-foreground: 144 33% 5%;
+    --card-foreground: 0 0% 0%;
     --popover: 0 0% 100%;
-    --popover-foreground: 144 33% 5%;
-    --primary: 144 48% 21%; /* #1B4D2E */
+    --popover-foreground: 0 0% 0%;
+    --primary: 144 48% 21%; /* Your Logo Forest Green: #1B4D2E */
     --primary-foreground: 0 0% 98%;
-    --secondary: 130 23% 90%;
+    --secondary: 0 0% 96%; /* Technical Light Gray */
     --secondary-foreground: 144 48% 21%;
     --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 40%; /* #666666 */
-    --accent: 0 0% 40%; /* #666666 */
-    --accent-foreground: 0 0% 98%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 0 0% 0%; /* Use Black as the secondary "pop" */
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 144 10% 85%;
-    --input: 144 10% 85%;
+    --border: 0 0% 0%; /* Bold Black Borders */
+    --input: 0 0% 85%;
     --ring: 144 48% 21%;
-    --radius: 0.5rem; /* Sharper corners for a more luxury feel */
+    --radius: 0rem; /* Sharp corners for a more architectural/luxury feel */
   }
 }
 
@@ -35,14 +35,23 @@
     @apply bg-background text-foreground font-body antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline tracking-tighter uppercase italic;
+    @apply font-headline tracking-tighter uppercase italic leading-none;
   }
 }
 
 .shadow-luxury {
-  box-shadow: 15px 15px 0px 0px rgba(27, 77, 46, 0.15);
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
 }
 
 .shadow-pop {
-  box-shadow: 8px 8px 0px 0px hsl(var(--primary));
+  box-shadow: 6px 6px 0px 0px hsl(var(--primary));
+}
+
+.shadow-hover {
+  transition: all 0.3s ease;
+}
+
+.shadow-hover:hover {
+  box-shadow: 12px 12px 0px 0px hsl(var(--primary));
+  transform: translate(-4px, -4px);
 }
