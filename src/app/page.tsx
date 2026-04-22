@@ -13,7 +13,7 @@ export default function Home() {
       id: '1',
       name: 'VINTAGE OVERSIZED BLAZER',
       price: 18500,
-      category: 'FORMAL WEAR',
+      category: 'LUXURY',
       imageUrl: 'https://picsum.photos/seed/clothing1/400/500',
       imageHint: 'luxury formal fashion',
       condition: 'MINT',
@@ -81,7 +81,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-12 py-10 text-xl font-black shadow-pop transition-transform hover:-translate-x-1 hover:-translate-y-1">
-                  <Link href="/shop" className="flex items-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
+                  <Link href="/shop?cat=STREETWEAR" className="flex items-center gap-3">SHOP THE DROP <ArrowRight className="h-6 w-6" /></Link>
                 </Button>
                 <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-none px-12 py-10 text-xl font-black transition-all">
                   SELL COLLECTIONS
@@ -160,7 +160,7 @@ export default function Home() {
                 <h2 className="text-7xl md:text-9xl font-black font-headline text-foreground tracking-tighter uppercase leading-[0.8]">NEW <br/><span className="text-primary italic">PIECES.</span></h2>
               </div>
               <Button asChild variant="link" className="text-foreground font-black text-xl group p-0 hover:no-underline border-b-4 border-primary">
-                <Link href="/shop" className="flex items-center gap-3">
+                <Link href="/shop?cat=LUXURY" className="flex items-center gap-3">
                   EXPLORE ALL ARCHIVES <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-2" />
                 </Link>
               </Button>
@@ -189,6 +189,22 @@ export default function Home() {
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none text-[40vw] font-black italic whitespace-nowrap">
             TOP TIER
+          </div>
+        </section>
+
+        {/* Map Section */}
+        <section className="w-full mt-24 mb-0 bg-background overflow-hidden border-t-4 border-primary">
+          <div className="w-full h-[450px] relative group">
+            <iframe
+              src="http://maps.google.com/maps?q=0&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={false}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="grayscale transition-all duration-700 group-hover:grayscale-0"
+            />
           </div>
         </section>
       </main>
